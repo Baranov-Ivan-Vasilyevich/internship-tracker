@@ -6,3 +6,17 @@
 body {
   @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased;
 }
+
+/* Tell the browser which theme we use, so date pickers, dropdowns and scrollbars match */
+:root {
+  color-scheme: light;
+}
+:root.dark {
+  color-scheme: dark;
+}
+
+/* A clear outline for keyboard users on every clickable or typeable element */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+}
