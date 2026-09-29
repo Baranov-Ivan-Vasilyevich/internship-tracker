@@ -44,7 +44,8 @@ async function check(url) {
       return { result: 'check manually', detail: `HTTP ${res.status}` }
     } catch (err) {
       if (method === 'HEAD') continue
-      const reason = err.name === 'TimeoutError' ? `timeout after ${TIMEOUT_MS / 1000}s` : (err.cause?.code ?? err.message)
+      const reason =
+        err.name === 'TimeoutError' ? `timeout after ${TIMEOUT_MS / 1000}s` : (err.cause?.code ?? err.message)
       return { result: 'check manually', detail: reason }
     }
   }
