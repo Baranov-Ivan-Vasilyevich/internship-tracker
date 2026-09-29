@@ -49,11 +49,7 @@ export function buildIcs() {
     // Deadlines become a one-day event on the deadline; other events cover their dates
     const start = d.deadline ? d.end : d.start
     const summary = d.deadline && d.start !== d.end ? `Deadline: ${d.label}` : d.label
-    const description = [
-      `Date is ${d.certainty}.`,
-      d.start !== d.end ? `Window: ${d.start} to ${d.end}.` : '',
-      d.note,
-    ]
+    const description = [`Date is ${d.certainty}.`, d.start !== d.end ? `Window: ${d.start} to ${d.end}.` : '', d.note]
       .filter(Boolean)
       .join(' ')
     const tentative = d.certainty === 'expected' || d.certainty === 'approximate'

@@ -106,7 +106,11 @@ export function useToggle() {
 export function isSavedData(x: unknown): x is Partial<SavedData> {
   const d = x as SavedData
   return (
-    !!d && d.version === 1 && Array.isArray(d.internships) && Array.isArray(d.learningDone) && Array.isArray(d.projectsDone)
+    !!d &&
+    d.version === 1 &&
+    Array.isArray(d.internships) &&
+    Array.isArray(d.learningDone) &&
+    Array.isArray(d.projectsDone)
   )
 }
 

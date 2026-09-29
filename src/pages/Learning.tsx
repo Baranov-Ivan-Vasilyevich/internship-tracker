@@ -49,7 +49,11 @@ export default function Learning() {
         const isOpen = open.has(track.id)
         return (
           <Card key={track.id} className="space-y-2">
-            <button onClick={() => flip(track.id)} className="flex w-full items-center gap-2 text-left" aria-expanded={isOpen}>
+            <button
+              onClick={() => flip(track.id)}
+              className="flex w-full items-center gap-2 text-left"
+              aria-expanded={isOpen}
+            >
               <span className="w-4 text-slate-400">{isOpen ? '▾' : '▸'}</span>
               <span className="flex-1 font-medium">{track.name}</span>
             </button>
@@ -123,7 +127,13 @@ function LearningRow({ item, done, active, onToggle }: RowProps) {
           )}
           {item.resources.map((r) =>
             r.url ? (
-              <a key={r.label} href={r.url} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline dark:text-blue-400">
+              <a
+                key={r.label}
+                href={r.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 hover:underline dark:text-blue-400"
+              >
                 {r.label} ↗
               </a>
             ) : (

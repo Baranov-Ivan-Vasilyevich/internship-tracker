@@ -43,7 +43,8 @@ export default function Dashboard() {
                   <CertaintyBadge value={d.certainty} />
                 </div>
                 <div className="text-slate-500">
-                  {formatDate(d.end)} · <span className="font-medium text-slate-700 dark:text-slate-300">{inDaysText(d.end)}</span>
+                  {formatDate(d.end)} ·{' '}
+                  <span className="font-medium text-slate-700 dark:text-slate-300">{inDaysText(d.end)}</span>
                   {d.start > today && d.start !== d.end && ` · opens ${formatDate(d.start)}`}
                 </div>
                 {d.note && <div className="text-xs text-slate-400">{d.note}</div>}

@@ -10,9 +10,7 @@
       "title": "Kaggle Python + Pandas courses",
       "when": "Dec 2026",
       "month": "2026-12",
-      "tracks": [
-        "E"
-      ],
+      "tracks": ["E"],
       "output": "Certificates on my Kaggle profile"
     },
     {
@@ -20,11 +18,7 @@
       "title": "MOEX market-data notebook: returns, volatility, beta",
       "when": "Jan 2027",
       "month": "2027-01",
-      "tracks": [
-        "C",
-        "E",
-        "F"
-      ],
+      "tracks": ["C", "E", "F"],
       "output": "GitHub notebook"
     },
     {
@@ -32,9 +26,7 @@
       "title": "First Kaggle submissions: Titanic + a Playground episode",
       "when": "Mar 2027",
       "month": "2027-03",
-      "tracks": [
-        "E"
-      ],
+      "tracks": ["E"],
       "output": "Kaggle profile"
     },
     {
@@ -42,10 +34,7 @@
       "title": "Initiation report on one MOEX company, with my own DCF",
       "when": "Mar 2027",
       "month": "2027-03",
-      "tracks": [
-        "A",
-        "F"
-      ],
+      "tracks": ["A", "F"],
       "output": "5-page PDF + 2-min pitch"
     },
     {
@@ -53,10 +42,7 @@
       "title": "Implied ERP model for MOEX stocks",
       "when": "Apr 2027",
       "month": "2027-04",
-      "tracks": [
-        "A",
-        "D"
-      ],
+      "tracks": ["A", "D"],
       "output": "GitHub notebook + write-up"
     },
     {
@@ -64,9 +50,7 @@
       "title": "DataLens dashboard on MOEX sectors",
       "when": "Apr 2027",
       "month": "2027-04",
-      "tracks": [
-        "C"
-      ],
+      "tracks": ["C"],
       "output": "Public dashboard link"
     },
     {
@@ -74,11 +58,7 @@
       "title": "PD model + validation report",
       "when": "Jun 2027",
       "month": "2027-06",
-      "tracks": [
-        "B",
-        "C",
-        "E"
-      ],
+      "tracks": ["B", "C", "E"],
       "output": "Kaggle notebook + 2-page PDF"
     },
     {
@@ -86,10 +66,7 @@
       "title": "LLM tool: summarizes IFRS reports, extracts multiples",
       "when": "Aug 2027",
       "month": "2027-08",
-      "tracks": [
-        "A",
-        "E"
-      ],
+      "tracks": ["A", "E"],
       "output": "GitHub repo + demo"
     }
   ]

@@ -76,7 +76,12 @@ function matches(i: Internship, f: Filters): boolean {
 }
 
 // A clickable column header. Shows ▲/▼ on the column you sorted by.
-function SortHeader(props: { k: SortKey; sort: { key: SortKey; asc: boolean }; onSort: (k: SortKey) => void; children: string }) {
+function SortHeader(props: {
+  k: SortKey
+  sort: { key: SortKey; asc: boolean }
+  onSort: (k: SortKey) => void
+  children: string
+}) {
   const { k, sort, onSort, children } = props
   return (
     <th className="px-2 py-2 text-left font-medium">
@@ -99,13 +104,11 @@ export default function Internships() {
   const setFilter = (k: keyof Filters, v: string) => setFilters({ ...filters, [k]: v })
 
   // Click a header once to sort, again to reverse
-  const sortBy = (key: SortKey) =>
-    setSort(sort.key === key ? { key, asc: !sort.asc } : { key, asc: true })
+  const sortBy = (key: SortKey) => setSort(sort.key === key ? { key, asc: !sort.asc } : { key, asc: true })
 
   const rows = internships
     .filter((i) => matches(i, filters))
     .sort((a, b) => compare(a, b, sort.key) * (sort.asc ? 1 : -1))
-
 
   return (
     <div className="space-y-4">
@@ -189,14 +192,26 @@ export default function Internships() {
         <table className="w-full text-sm">
           <thead className="bg-slate-100 dark:bg-slate-900">
             <tr>
-              <SortHeader sort={sort} onSort={sortBy} k="company">Program</SortHeader>
+              <SortHeader sort={sort} onSort={sortBy} k="company">
+                Program
+              </SortHeader>
               <th className="px-2 py-2 text-left font-medium">Track</th>
-              <SortHeader sort={sort} onSort={sortBy} k="qualify">You qualify</SortHeader>
+              <SortHeader sort={sort} onSort={sortBy} k="qualify">
+                You qualify
+              </SortHeader>
               <th className="px-2 py-2 text-left font-medium">Hours · Applications</th>
-              <SortHeader sort={sort} onSort={sortBy} k="ibFit">IB</SortHeader>
-              <SortHeader sort={sort} onSort={sortBy} k="mlFit">ML</SortHeader>
-              <SortHeader sort={sort} onSort={sortBy} k="status">Status</SortHeader>
-              <SortHeader sort={sort} onSort={sortBy} k="dateApplied">Applied on</SortHeader>
+              <SortHeader sort={sort} onSort={sortBy} k="ibFit">
+                IB
+              </SortHeader>
+              <SortHeader sort={sort} onSort={sortBy} k="mlFit">
+                ML
+              </SortHeader>
+              <SortHeader sort={sort} onSort={sortBy} k="status">
+                Status
+              </SortHeader>
+              <SortHeader sort={sort} onSort={sortBy} k="dateApplied">
+                Applied on
+              </SortHeader>
               <th className="px-2 py-2 text-left font-medium">Notes</th>
             </tr>
           </thead>
@@ -247,7 +262,10 @@ export default function Internships() {
       {/* Phone: one card per internship */}
       <div className="space-y-3 md:hidden">
         {rows.map((i) => (
-          <div key={i.id} className="space-y-2 rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
+          <div
+            key={i.id}
+            className="space-y-2 rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900"
+          >
             <div className="flex items-start justify-between gap-2">
               <ProgramName i={i} />
               <TrackTags tracks={i.tracks} />
@@ -306,9 +324,7 @@ function hoursText(hours: string) {
 }
 
 function QualifyText({ i }: { i: Internship }) {
-  return (
-    <span className={i.qualifyNow ? 'font-medium text-emerald-700 dark:text-emerald-400' : ''}>{i.qualify}</span>
-  )
+  return <span className={i.qualifyNow ? 'font-medium text-emerald-700 dark:text-emerald-400' : ''}>{i.qualify}</span>
 }
 
 // ---------- "Add internship" form ----------
@@ -355,7 +371,12 @@ function AddForm({ onAdd }: { onAdd: (i: Internship) => void }) {
     >
       <label className="flex flex-col gap-1 text-sm">
         Company *
-        <input required value={form.company} onChange={(e) => set({ company: e.target.value })} className={inputClass} />
+        <input
+          required
+          value={form.company}
+          onChange={(e) => set({ company: e.target.value })}
+          className={inputClass}
+        />
       </label>
       {text('role', 'Role')}
       {text('whatYouDo', 'What you do')}
@@ -383,8 +404,8 @@ function AddForm({ onAdd }: { onAdd: (i: Internship) => void }) {
       </div>
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <label className="flex items-center gap-1">
-          <input type="checkbox" checked={form.qualifyNow} onChange={(e) => set({ qualifyNow: e.target.checked })} />
-          I qualify now
+          <input type="checkbox" checked={form.qualifyNow} onChange={(e) => set({ qualifyNow: e.target.checked })} />I
+          qualify now
         </label>
         <span className="text-slate-500">Tracks:</span>
         {INTERNSHIP_TRACKS.map((t) => (
@@ -401,7 +422,10 @@ function AddForm({ onAdd }: { onAdd: (i: Internship) => void }) {
         ))}
       </div>
       <div className="sm:col-span-2">
-        <button type="submit" className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white dark:bg-slate-100 dark:text-slate-900">
+        <button
+          type="submit"
+          className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white dark:bg-slate-100 dark:text-slate-900"
+        >
           Save internship
         </button>
       </div>

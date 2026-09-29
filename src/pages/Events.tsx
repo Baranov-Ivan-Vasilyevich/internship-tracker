@@ -3,7 +3,15 @@ import { Card, CertaintyBadge, TrackTags, buttonClass, secondaryButtonClass } fr
 import { formatDate, inDaysText, todayISO } from '../lib/dates'
 import { KEY_DATES } from '../seed'
 import { useEvents } from '../store'
-import { EVENT_KINDS, EVENT_STATUSES, INTERNSHIP_TRACKS, type EventEntry, type EventKind, type EventStatus, type Round } from '../types'
+import {
+  EVENT_KINDS,
+  EVENT_STATUSES,
+  INTERNSHIP_TRACKS,
+  type EventEntry,
+  type EventKind,
+  type EventStatus,
+  type Round,
+} from '../types'
 
 const STATUS_COLORS: Record<EventStatus, string> = {
   Interested: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
@@ -195,7 +203,12 @@ function RoundForm({ onSave, onCancel }: { onSave: (r: Round) => void; onCancel:
       className="space-y-2 rounded-md bg-slate-50 p-3 dark:bg-slate-800/50"
     >
       <div className="flex flex-wrap gap-2">
-        <input type="date" value={r.date} onChange={(ev) => setR({ ...r, date: ev.target.value })} className={inputClass} />
+        <input
+          type="date"
+          value={r.date}
+          onChange={(ev) => setR({ ...r, date: ev.target.value })}
+          className={inputClass}
+        />
         <input
           required
           value={r.round}
@@ -241,12 +254,21 @@ function AddEventForm({ onAdd }: { onAdd: (e: EventEntry) => void }) {
     >
       <label className="flex flex-col gap-1 text-sm">
         Name *
-        <input required value={e.name} onChange={(ev) => setE({ ...e, name: ev.target.value })} className={inputClass} />
+        <input
+          required
+          value={e.name}
+          onChange={(ev) => setE({ ...e, name: ev.target.value })}
+          className={inputClass}
+        />
       </label>
       <div className="flex gap-3 text-sm">
         <label className="flex flex-1 flex-col gap-1">
           Kind
-          <select value={e.kind} onChange={(ev) => setE({ ...e, kind: ev.target.value as EventKind })} className={inputClass}>
+          <select
+            value={e.kind}
+            onChange={(ev) => setE({ ...e, kind: ev.target.value as EventKind })}
+            className={inputClass}
+          >
             {(Object.keys(EVENT_KINDS) as EventKind[]).map((k) => (
               <option key={k} value={k}>
                 {EVENT_KINDS[k]}
@@ -277,7 +299,12 @@ function AddEventForm({ onAdd }: { onAdd: (e: EventEntry) => void }) {
       </label>
       <label className="flex flex-col gap-1 text-sm">
         Link
-        <input value={e.link} onChange={(ev) => setE({ ...e, link: ev.target.value })} placeholder="https://…" className={inputClass} />
+        <input
+          value={e.link}
+          onChange={(ev) => setE({ ...e, link: ev.target.value })}
+          placeholder="https://…"
+          className={inputClass}
+        />
       </label>
       <div className="sm:col-span-2">
         <button type="submit" className={buttonClass}>

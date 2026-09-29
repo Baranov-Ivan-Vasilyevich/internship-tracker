@@ -111,7 +111,11 @@ export default function Timeline() {
             <div className={`shrink-0 ${LABEL_COL}`} />
             <div className="relative h-11 flex-1 pt-2">
               {MONTHS.map((m) => (
-                <div key={m.iso} className="absolute top-2 pl-1 text-xs text-slate-500" style={{ left: `${pct(m.iso)}%` }}>
+                <div
+                  key={m.iso}
+                  className="absolute top-2 pl-1 text-xs text-slate-500"
+                  style={{ left: `${pct(m.iso)}%` }}
+                >
                   <div className="h-4 font-medium">{m.year}</div>
                   <div>{m.label}</div>
                 </div>
@@ -130,7 +134,9 @@ export default function Timeline() {
 function Section({ title, rows }: { title: string; rows: Row[] }) {
   return (
     <div className="mt-2">
-      <div className={`${LABEL_COL} w-max! pr-2 pl-4 pt-2 pb-1 text-xs font-semibold tracking-wide text-slate-500 uppercase`}>
+      <div
+        className={`${LABEL_COL} w-max! pr-2 pl-4 pt-2 pb-1 text-xs font-semibold tracking-wide text-slate-500 uppercase`}
+      >
         {title}
       </div>
       {rows.map((r) => (

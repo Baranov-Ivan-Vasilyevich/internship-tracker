@@ -67,7 +67,10 @@ export default function Backup() {
           Upcoming deadlines and competition dates as an .ics file, with a reminder 7 days before each deadline. Open it
           with Apple Calendar or import it into Google Calendar. Expected and approximate dates are marked as tentative.
         </p>
-        <button onClick={() => download('internship-deadlines.ics', buildIcs(), 'text/calendar')} className={buttonClass}>
+        <button
+          onClick={() => download('internship-deadlines.ics', buildIcs(), 'text/calendar')}
+          className={buttonClass}
+        >
           Export deadlines (.ics)
         </button>
       </Card>

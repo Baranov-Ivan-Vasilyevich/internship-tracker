@@ -16,13 +16,13 @@ Open http://localhost:5173.
 
 All plan data is in `src/data/`:
 
-| File | What it holds |
-| --- | --- |
-| `internships.json` | Internship rows (used once, as the starting data; later edits happen in the app) |
-| `learning.json` | Tracks and checklist items |
-| `projects.json` | Own CV projects P1–P8 and the rules |
-| `dates.json` | Deadlines and key dates (`certainty`: official / expected / target / approximate) |
-| `events.json` | Case championships, competitions and events (used once, as starting data, like internships) |
+| File               | What it holds                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `internships.json` | Internship rows (used once, as the starting data; later edits happen in the app)            |
+| `learning.json`    | Tracks and checklist items                                                                  |
+| `projects.json`    | Own CV projects P1–P8 and the rules                                                         |
+| `dates.json`       | Deadlines and key dates (`certainty`: official / expected / target / approximate)           |
+| `events.json`      | Case championships, competitions and events (used once, as starting data, like internships) |
 
 Changes to `learning`, `projects` and `dates` show up immediately.
 A new row (new `id`) in `internships.json` or `events.json` is added on the next page load; existing rows are never overwritten.
