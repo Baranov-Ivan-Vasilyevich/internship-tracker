@@ -1,0 +1,713 @@
+{
+  "tracks": [
+    {
+      "id": "foundation",
+      "name": "Foundation: Python to ML in 12 months"
+    },
+    {
+      "id": "A",
+      "name": "Track A: valuation and deals"
+    },
+    {
+      "id": "B",
+      "name": "Track B: risk and model validation"
+    },
+    {
+      "id": "C",
+      "name": "Track C: data analytics and data science in banks"
+    },
+    {
+      "id": "D",
+      "name": "Track D: quant and AI research"
+    },
+    {
+      "id": "E",
+      "name": "Track E: ML & Kaggle"
+    },
+    {
+      "id": "F",
+      "name": "Track F: equity research & buy-side"
+    },
+    {
+      "id": "G",
+      "name": "Track G: case championships"
+    }
+  ],
+  "items": [
+    {
+      "id": "FND1",
+      "track": "foundation",
+      "when": "Oct–Nov 2026",
+      "start": "2026-10",
+      "end": "2026-11",
+      "title": "Python basics: types, loops, functions, files",
+      "resources": [
+        {
+          "label": "Поколение Python: курс для начинающих",
+          "url": "https://stepik.org/course/58852/promo"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "FND2",
+      "track": "foundation",
+      "when": "Dec 2026",
+      "start": "2026-12",
+      "end": "2026-12",
+      "title": "pandas, charts, Jupyter notebooks",
+      "resources": [
+        {
+          "label": "Kaggle Learn: Pandas, Data Visualization",
+          "url": "https://www.kaggle.com/learn"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "FND3",
+      "track": "foundation",
+      "when": "Jan 2027",
+      "start": "2027-01",
+      "end": "2027-01",
+      "title": "Pulling market data with Python",
+      "resources": [
+        {
+          "label": "apimoex, a client for the MOEX ISS API",
+          "url": "https://github.com/WLM1ke/apimoex"
+        }
+      ],
+      "proof": null,
+      "project": "P2"
+    },
+    {
+      "id": "FND4",
+      "track": "foundation",
+      "when": "Feb 2027",
+      "start": "2027-02",
+      "end": "2027-02",
+      "title": "SQL: SELECT, JOIN, GROUP BY, window functions",
+      "resources": [
+        {
+          "label": "Интерактивный тренажер по SQL",
+          "url": "https://stepik.org/course/63054/promo"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "FND5",
+      "track": "foundation",
+      "when": "Mar–Apr 2027",
+      "start": "2027-03",
+      "end": "2027-04",
+      "title": "Statistics and probability: distributions, tests, regression",
+      "resources": [
+        {
+          "label": "Основы статистики",
+          "url": "https://stepik.org/course/76/promo"
+        },
+        {
+          "label": "Хендбук по математике",
+          "url": "https://education.yandex.ru/handbook/math"
+        }
+      ],
+      "proof": "Own implied ERP model for MOEX stocks, in Python",
+      "project": "P5"
+    },
+    {
+      "id": "FND6",
+      "track": "foundation",
+      "when": "May–Jun 2027",
+      "start": "2027-05",
+      "end": "2027-06",
+      "title": "Intro ML: regression, trees, gradient boosting, validation",
+      "resources": [
+        {
+          "label": "Kaggle Learn: Intro and Intermediate ML",
+          "url": "https://www.kaggle.com/learn"
+        },
+        {
+          "label": "Учебник по машинному обучению",
+          "url": "https://education.yandex.ru/handbook/ml"
+        },
+        {
+          "label": "Give Me Some Credit",
+          "url": "https://www.kaggle.com/c/GiveMeSomeCredit"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "FND7",
+      "track": "foundation",
+      "when": "Jul–Aug 2027",
+      "start": "2027-07",
+      "end": "2027-08",
+      "title": "LLM basics applied to finance",
+      "resources": [
+        {
+          "label": "Hugging Face LLM Course",
+          "url": "https://huggingface.co/learn/llm-course/chapter1/1"
+        }
+      ],
+      "proof": null,
+      "project": "P8"
+    },
+    {
+      "id": "FND8",
+      "track": "foundation",
+      "when": "Sep 2027",
+      "start": "2027-09",
+      "end": "2027-09",
+      "title": "Portfolio and CV",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A1",
+      "track": "A",
+      "when": "Oct 2026",
+      "start": "2026-10",
+      "end": "2026-10",
+      "title": "Rebuild a DCF from a blank sheet in under 2 hours and defend every assumption. Skim the ФСО I–VI before the ТеДо interview.",
+      "resources": [
+        {
+          "label": "ФСО I–VI",
+          "url": "https://base.garant.ru/404525594/"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A2",
+      "track": "A",
+      "when": "Oct–Dec 2026",
+      "start": "2026-10",
+      "end": "2026-12",
+      "title": "Work through the valuation lectures and datasets on Damodaran Online",
+      "resources": [
+        {
+          "label": "Damodaran Online",
+          "url": "https://pages.stern.nyu.edu/~adamodar/"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A3",
+      "track": "A",
+      "when": "Nov–Dec 2026",
+      "start": "2026-11",
+      "end": "2026-12",
+      "title": "Build a three-statement model from scratch for Inter RAO; learn Excel shortcuts until you rarely touch the mouse",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A4",
+      "track": "A",
+      "when": "Jan–Mar 2027",
+      "start": "2027-01",
+      "end": "2027-03",
+      "title": "Comparables, precedent transactions and M&A accounting basics",
+      "resources": [
+        {
+          "label": "Book: Rosenbaum & Pearl, Investment Banking",
+          "url": null
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A5",
+      "track": "A",
+      "when": "Apr–Jun 2027",
+      "start": "2027-04",
+      "end": "2027-06",
+      "title": "LBO basics; drill technical questions with the 400 Questions guide",
+      "resources": [
+        {
+          "label": "400 Questions guide",
+          "url": "https://mergersandinquisitions.com/400-questions-investment-banking/"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A6",
+      "track": "A",
+      "when": "Sep 2027",
+      "start": "2027-09",
+      "end": "2027-09",
+      "title": "Apply to Sber CIB and B1 Transaction Advisory",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A7",
+      "track": "A",
+      "when": "Jan–Aug 2027",
+      "start": "2027-01",
+      "end": "2027-08",
+      "title": "AI edge: from January, a Python script pulls MOEX prices and builds your comps table. From July, your LLM tool summarizes IFRS reports.",
+      "resources": [],
+      "proof": null,
+      "project": "P8"
+    },
+    {
+      "id": "B1",
+      "track": "B",
+      "when": "Oct 2026",
+      "start": "2026-10",
+      "end": "2026-10",
+      "title": "Apply to both ТеДо risk roles. Learn the vocabulary first: PD, LGD, EAD, model lifecycle, model risk",
+      "resources": [
+        {
+          "label": "ТеДо Academy validation course outline",
+          "url": "https://training.tedo.ru/event/modeling-and-validation/"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "B2",
+      "track": "B",
+      "when": "Mar–Apr 2027",
+      "start": "2027-03",
+      "end": "2027-04",
+      "title": "Statistics and logistic regression in statsmodels",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "B3",
+      "track": "B",
+      "when": "May–Jun 2027",
+      "start": "2027-05",
+      "end": "2027-06",
+      "title": "Build a PD model on Give Me Some Credit, then write a two-page validation report on it: Gini, a calibration test, PSI between two time samples",
+      "resources": [
+        {
+          "label": "Give Me Some Credit",
+          "url": "https://www.kaggle.com/c/GiveMeSomeCredit"
+        }
+      ],
+      "proof": null,
+      "project": "P7"
+    },
+    {
+      "id": "B4",
+      "track": "B",
+      "when": "Summer 2027",
+      "start": "2027-06",
+      "end": "2027-08",
+      "title": "Read the IFRS 9 impairment basics and the structure of 845-П",
+      "resources": [
+        {
+          "label": "Положение Банка России 845-П",
+          "url": "https://normativ.kontur.ru/document?documentId=487294&moduleId=1"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "B5",
+      "track": "B",
+      "when": "Autumn 2027",
+      "start": "2027-09",
+      "end": "2027-11",
+      "title": "Apply to Sber and Alfa risk teams with the validation report as your main project",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "C1",
+      "track": "C",
+      "when": "Mar 2027",
+      "start": "2027-03",
+      "end": "2027-03",
+      "title": "30+ practice problems on SQL Academy, including window functions",
+      "resources": [
+        {
+          "label": "SQL Academy",
+          "url": "https://sql-academy.org/ru/trainer"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "C2",
+      "track": "C",
+      "when": "Mar–Apr 2027",
+      "start": "2027-03",
+      "end": "2027-04",
+      "title": "Statistics for A/B tests: t-test, confidence intervals, sample size",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "C3",
+      "track": "C",
+      "when": "Apr 2027",
+      "start": "2027-04",
+      "end": "2027-04",
+      "title": "One public dashboard in Yandex DataLens on MOEX data",
+      "resources": [
+        {
+          "label": "Yandex DataLens",
+          "url": "https://datalens.ru/"
+        }
+      ],
+      "proof": null,
+      "project": "P6"
+    },
+    {
+      "id": "C4",
+      "track": "C",
+      "when": "Apr–May 2027",
+      "start": "2027-04",
+      "end": "2027-05",
+      "title": "Apply to Sber analytics internships posted outside SberSeasons, and to the Alfa-Bank spring wave",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "C5",
+      "track": "C",
+      "when": "May–Jun 2027",
+      "start": "2027-05",
+      "end": "2027-06",
+      "title": "CatBoost credit-scoring model (the same project as Track B), with feature engineering documented in the notebook",
+      "resources": [],
+      "proof": null,
+      "project": "P7"
+    },
+    {
+      "id": "C6",
+      "track": "C",
+      "when": "Autumn 2027",
+      "start": "2027-09",
+      "end": "2027-11",
+      "title": "T-Bank T-Start analytics and Sber DS applications",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "D1",
+      "track": "D",
+      "when": "Sep–Oct 2027",
+      "start": "2027-09",
+      "end": "2027-10",
+      "title": "Math refresh with the Хендбук по математике: linear algebra and probability",
+      "resources": [
+        {
+          "label": "Хендбук по математике",
+          "url": "https://education.yandex.ru/handbook/math"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "D2",
+      "track": "D",
+      "when": "Autumn 2027",
+      "start": "2027-09",
+      "end": "2027-11",
+      "title": "Hull, Options, Futures and Other Derivatives. Implement Black–Scholes and historical and Monte Carlo VaR in Python on MOEX data",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "D3",
+      "track": "D",
+      "when": "Autumn 2027–spring 2028",
+      "start": "2027-09",
+      "end": "2028-05",
+      "title": "The free semester course at Deep Learning School (МФТИ), plus Karpathy's Neural Networks: Zero to Hero",
+      "resources": [
+        {
+          "label": "Deep Learning School (МФТИ)",
+          "url": "https://dls.samcs.ru/"
+        },
+        {
+          "label": "Neural Networks: Zero to Hero",
+          "url": "https://karpathy.ai/zero-to-hero.html"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "D4",
+      "track": "D",
+      "when": "Spring 2028",
+      "start": "2028-03",
+      "end": "2028-05",
+      "title": "Fine-tuning chapters of the Hugging Face LLM Course; a LoRA fine-tune of a small model on Russian financial news",
+      "resources": [
+        {
+          "label": "Hugging Face LLM Course",
+          "url": "https://huggingface.co/learn/llm-course/chapter1/1"
+        }
+      ],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "D5",
+      "track": "D",
+      "when": "Summer 2028",
+      "start": "2028-06",
+      "end": "2028-08",
+      "title": "Apply to Sber Risk Research (Risk Quant or Data Scientist)",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "E1",
+      "track": "E",
+      "when": "Oct 2026",
+      "start": "2026-10",
+      "end": "2026-10",
+      "title": "Create Kaggle + GitHub accounts; Kaggle Python course",
+      "resources": [],
+      "proof": null,
+      "project": "P1"
+    },
+    {
+      "id": "E2",
+      "track": "E",
+      "when": "Oct–Dec 2026",
+      "start": "2026-10",
+      "end": "2026-12",
+      "title": "Kaggle Learn Python, Pandas, Data Visualization",
+      "resources": [
+        {
+          "label": "Kaggle Learn",
+          "url": "https://www.kaggle.com/learn"
+        }
+      ],
+      "proof": null,
+      "project": "P1"
+    },
+    {
+      "id": "E3",
+      "track": "E",
+      "when": "Jan 2027",
+      "start": "2027-01",
+      "end": "2027-01",
+      "title": "Titanic submission, then the current Playground Series episode",
+      "resources": [],
+      "proof": null,
+      "project": "P3"
+    },
+    {
+      "id": "E4",
+      "track": "E",
+      "when": "Feb–Mar 2027",
+      "start": "2027-02",
+      "end": "2027-03",
+      "title": "Enter the Data Fusion Contest (VTB + T1, banking data, on ods.ai)",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "E5",
+      "track": "E",
+      "when": "Apr–Jun 2027",
+      "start": "2027-04",
+      "end": "2027-06",
+      "title": "Kaggle Learn Intro/Intermediate ML + Feature Engineering; Give Me Some Credit and Home Credit Default Risk as late submissions",
+      "resources": [
+        {
+          "label": "Kaggle Learn",
+          "url": "https://www.kaggle.com/learn"
+        },
+        {
+          "label": "Give Me Some Credit",
+          "url": "https://www.kaggle.com/c/GiveMeSomeCredit"
+        }
+      ],
+      "proof": null,
+      "project": "P7"
+    },
+    {
+      "id": "E6",
+      "track": "E",
+      "when": "Jun 2027",
+      "start": "2027-06",
+      "end": "2027-06",
+      "title": "Publish the credit-default notebook with an English write-up",
+      "resources": [],
+      "proof": null,
+      "project": "P7"
+    },
+    {
+      "id": "E7",
+      "track": "E",
+      "when": "From Jul 2027",
+      "start": "2027-07",
+      "end": null,
+      "title": "A live competition in a team; ODS open ML course alongside",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "E8",
+      "track": "E",
+      "when": "2028 goal",
+      "start": "2028-01",
+      "end": "2028-12",
+      "title": "Kaggle Competitions Expert",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "F1",
+      "track": "F",
+      "when": "From Oct 2026",
+      "start": "2026-10",
+      "end": null,
+      "title": "Follow one sector; read quarterly IFRS results for 3 companies",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "F2",
+      "track": "F",
+      "when": "Monthly",
+      "start": null,
+      "end": null,
+      "title": "Search hh.ru for «стажер аналитик акций»",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "F3",
+      "track": "F",
+      "when": "Feb–Mar 2027",
+      "start": "2027-02",
+      "end": "2027-03",
+      "title": "Write my own 5-page initiation report",
+      "resources": [],
+      "proof": null,
+      "project": "P4"
+    },
+    {
+      "id": "F4",
+      "track": "F",
+      "when": "Apr 2027",
+      "start": "2027-04",
+      "end": "2027-04",
+      "title": "2-minute pitch recorded in RU + EN",
+      "resources": [],
+      "proof": null,
+      "project": "P4"
+    },
+    {
+      "id": "F5",
+      "track": "F",
+      "when": "Every quarter",
+      "start": null,
+      "end": null,
+      "title": "Update the report after results",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "F6",
+      "track": "F",
+      "when": "Summer 2027",
+      "start": "2027-06",
+      "end": "2027-08",
+      "title": "Python screen ranking MOEX stocks by multiples",
+      "resources": [],
+      "proof": null,
+      "project": "P2"
+    },
+    {
+      "id": "G1",
+      "track": "G",
+      "when": "Oct 2026",
+      "start": "2026-10",
+      "end": "2026-10",
+      "title": "Register for one autumn Changellenge cup",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "G2",
+      "track": "G",
+      "when": "During each case",
+      "start": null,
+      "end": null,
+      "title": "Own one part end to end, ideally the financial model",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "G3",
+      "track": "G",
+      "when": "Feb 2027",
+      "start": "2027-02",
+      "end": "2027-02",
+      "title": "Form a team for Cup Russia + Cup IT (spring season)",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "G4",
+      "track": "G",
+      "when": "After each round",
+      "start": null,
+      "end": null,
+      "title": "Write down what I personally did, with numbers",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "G5",
+      "track": "G",
+      "when": "Next School of Finance season",
+      "start": null,
+      "end": null,
+      "title": "Enter again with a model you built yourself",
+      "resources": [],
+      "proof": null,
+      "project": null
+    }
+  ]
+}

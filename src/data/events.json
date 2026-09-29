@@ -1,0 +1,90 @@
+[
+  {
+    "id": "data-fusion",
+    "name": "Data Fusion Contest",
+    "kind": "ml",
+    "track": "E",
+    "info": "VTB + T1, banking data, on ods.ai. Expected Feb–Mar 2027.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "yandex-cup",
+    "name": "Yandex Cup",
+    "kind": "ml",
+    "track": "E",
+    "info": "2026 registration closes 1 Nov (official); final 27–29 Nov. Aim for the 2027 analytics track.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "ai-journey",
+    "name": "AI Journey Contest",
+    "kind": "ml",
+    "track": "E",
+    "info": "20 Oct 2026. Watch only.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "cup-russia",
+    "name": "Cup Russia",
+    "kind": "case",
+    "track": "G",
+    "info": "2026 season: registration until 22 Mar, final 29 Apr.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "cup-it",
+    "name": "Cup IT",
+    "kind": "case",
+    "track": "G",
+    "info": "Autumn + spring seasons.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "cup-moscow",
+    "name": "Cup Moscow",
+    "kind": "case",
+    "track": "G",
+    "info": "Autumn + spring seasons.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "school-of-finance",
+    "name": "School of Finance",
+    "kind": "case",
+    "track": "G",
+    "info": "Enter again next season with a model you built yourself.",
+    "link": "",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  },
+  {
+    "id": "sber-rr-open-days",
+    "name": "Sber Risk Research open days",
+    "kind": "event",
+    "track": "D",
+    "info": "Attend each open day and ask what their interns knew on day one.",
+    "link": "https://t.me/FinCareer/4211",
+    "status": "Interested",
+    "notes": "",
+    "rounds": []
+  }
+]

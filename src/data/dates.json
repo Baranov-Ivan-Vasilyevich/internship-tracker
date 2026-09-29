@@ -1,0 +1,122 @@
+[
+  {
+    "id": "tedo",
+    "label": "ТеДо practicant roles",
+    "type": "application",
+    "start": "2026-09-28",
+    "end": "2026-10-31",
+    "certainty": "target",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "cbr",
+    "label": "Bank of Russia spring internship",
+    "type": "application",
+    "start": "2026-10-01",
+    "end": "2026-11-02",
+    "certainty": "expected",
+    "deadline": true,
+    "note": "Estimate from the 2025 cycle (closed 2 Nov 2025)"
+  },
+  {
+    "id": "alfa-1",
+    "label": "Alfa-Bank wave 1",
+    "type": "application",
+    "start": "2027-01-01",
+    "end": "2027-03-31",
+    "certainty": "approximate",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "alfa-2",
+    "label": "Alfa-Bank wave 2",
+    "type": "application",
+    "start": "2027-04-01",
+    "end": "2027-06-30",
+    "certainty": "approximate",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "moex",
+    "label": "MOEX Summer applications",
+    "type": "application",
+    "start": "2027-03-01",
+    "end": "2027-04-30",
+    "certainty": "approximate",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "summer",
+    "label": "Summer internship",
+    "type": "internship",
+    "start": "2027-07-01",
+    "end": "2027-08-31",
+    "certainty": "target",
+    "deadline": false,
+    "note": ""
+  },
+  {
+    "id": "ib-3rd",
+    "label": "3rd-year IB applications (Sber CIB, B1)",
+    "type": "application",
+    "start": "2027-09-01",
+    "end": "2027-10-31",
+    "certainty": "target",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "changellenge-autumn",
+    "label": "Register for an autumn Changellenge cup",
+    "type": "competition",
+    "start": "2026-10-01",
+    "end": "2026-10-31",
+    "certainty": "target",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "ai-journey",
+    "label": "AI Journey Contest (watch only)",
+    "type": "competition",
+    "start": "2026-10-20",
+    "end": "2026-10-20",
+    "certainty": "approximate",
+    "deadline": false,
+    "note": ""
+  },
+  {
+    "id": "yandex-cup-reg",
+    "label": "Yandex Cup 2026 registration closes",
+    "type": "competition",
+    "start": "2026-11-01",
+    "end": "2026-11-01",
+    "certainty": "official",
+    "deadline": true,
+    "note": ""
+  },
+  {
+    "id": "yandex-cup-final",
+    "label": "Yandex Cup 2026 final",
+    "type": "competition",
+    "start": "2026-11-27",
+    "end": "2026-11-29",
+    "certainty": "official",
+    "deadline": false,
+    "note": ""
+  },
+  {
+    "id": "data-fusion",
+    "label": "Data Fusion Contest",
+    "type": "competition",
+    "start": "2027-02-01",
+    "end": "2027-03-31",
+    "certainty": "expected",
+    "deadline": true,
+    "note": ""
+  }
+]
