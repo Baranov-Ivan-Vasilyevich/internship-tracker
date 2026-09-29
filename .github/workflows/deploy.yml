@@ -28,6 +28,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Stop before publishing if the code has problems or a test fails
+      - run: npm run lint
+      - run: npm test
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
