@@ -1,7 +1,9 @@
+import { ResourceLink } from '../components/ResourceLink'
 import { Card, ProgressBar, TrackTags } from '../components/ui'
 import { currentMonth } from '../lib/dates'
-import { LEARNING, PROJECTS, PROJECT_RULES, trackLabel } from '../seed'
-import { useData, useToggle } from '../store'
+import { LEARNING, PROJECTS, PROJECT_RULES, projectResources, trackLabel } from '../seed'
+import { useData } from '../state/context'
+import { useToggle } from '../state/hooks'
 
 export default function Projects() {
   const { data } = useData()
@@ -65,6 +67,14 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
+              )}
+              {projectResources(p.id).length > 0 && (
+                <div className="flex flex-wrap gap-x-3 gap-y-1 pl-7 text-xs">
+                  <span className="text-slate-500">Resources:</span>
+                  {projectResources(p.id).map((id) => (
+                    <ResourceLink key={id} id={id} />
+                  ))}
+                </div>
               )}
             </Card>
           )

@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom'
+import { ResourceLink } from '../components/ResourceLink'
 import { Card, CertaintyBadge, ProgressBar } from '../components/ui'
 import { currentMonth, formatDate, formatMonth, inDaysText, todayISO } from '../lib/dates'
-import { KEY_DATES, LEARNING, PROJECTS, isActive, trackLabel } from '../seed'
-import { useData } from '../store'
+import { collectDates, upcomingDeadlines } from '../lib/deadlines'
+import { LEARNING, PROJECTS, isActive, trackLabel } from '../seed'
+import { useData } from '../state/context'
+import { useEvents, useInternships } from '../state/hooks'
 import { STATUSES } from '../types'
 
 export default function Dashboard() {
   const { data } = useData()
+  const { rows: internships } = useInternships()
+  const { rows: events } = useEvents()
   const today = todayISO()
   const month = currentMonth()
   const done = new Set(data.learningDone)
 
-  // Next 3 deadlines: the end date of each window that hasn't passed yet
-  const deadlines = KEY_DATES.filter((d) => d.deadline && d.end >= today)
-    .sort((a, b) => a.end.localeCompare(b.end))
-    .slice(0, 3)
+  // Next 3 deadlines: application windows and event dates that haven't passed yet
+  const deadlines = upcomingDeadlines(collectDates(events), today).slice(0, 3)
 
   // Current phase of the foundation track, or the next one if we're between phases
   const foundation = LEARNING.filter((i) => i.track === 'foundation')
@@ -93,16 +96,22 @@ export default function Dashboard() {
           {STATUSES.map((s) => (
             <Link
               key={s}
-              to="/internships"
+              to={`/internships?status=${encodeURIComponent(s)}`}
               className="rounded-md bg-slate-50 p-3 text-center hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800"
             >
               <div className="text-2xl font-semibold tabular-nums">
-                {data.internships.filter((i) => i.status === s).length}
+                {internships.filter((i) => i.state.status === s).length}
               </div>
               <div className="text-xs text-slate-500">{s}</div>
             </Link>
           ))}
         </div>
+      </Card>
+
+      <Card className="space-y-1">
+        <h2 className="font-medium">Career feed</h2>
+        <p className="text-sm text-slate-500">New internships and events are posted here first.</p>
+        <ResourceLink id="fincareer-feed" />
       </Card>
 
       <Card className="space-y-3">

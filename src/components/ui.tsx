@@ -1,5 +1,6 @@
 // Small pieces of UI shared by several pages.
 import type { ReactNode } from 'react'
+import { formatDate } from '../lib/dates'
 import type { Certainty } from '../types'
 
 // tone="note" gives an amber highlight box (rules, tips)
@@ -18,7 +19,13 @@ export function ProgressBar({ done, total }: { done: number; total: number }) {
   const pct = total === 0 ? 0 : Math.round((done / total) * 100)
   return (
     <div className="flex items-center gap-2">
-      <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+      <div
+        role="progressbar"
+        aria-valuenow={pct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        className="h-2 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800"
+      >
         <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${pct}%` }} />
       </div>
       <span className="w-20 text-right text-xs text-slate-500 tabular-nums">
@@ -56,3 +63,49 @@ export const buttonClass =
   'rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300'
 export const secondaryButtonClass =
   'rounded-md border border-slate-300 px-3 py-1.5 text-sm hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800'
+
+export const inputClass =
+  'rounded-md border border-slate-300 bg-white px-2 py-1 text-sm dark:border-slate-700 dark:bg-slate-900'
+
+// Every link to another site opens in a new tab. rel="noreferrer" stops that site controlling this tab.
+export function ExternalLink({
+  href,
+  children,
+  className = '',
+}: {
+  href: string
+  children: ReactNode
+  className?: string
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={`text-blue-600 hover:underline dark:text-blue-400 ${className}`}
+    >
+      {children}
+      <span aria-hidden> ↗</span>
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  )
+}
+
+// When a link was last checked by hand. null = not checked yet.
+export function VerifiedBadge({ verified }: { verified: string | null }) {
+  return verified ? (
+    <span className="text-[11px] text-slate-400">verified {formatDate(verified)}</span>
+  ) : (
+    <span className="rounded bg-amber-100 px-1 text-[11px] text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+      TODO: verify
+    </span>
+  )
+}
+
+export function EmptyState({ children }: { children: ReactNode }) {
+  return (
+    <p className="rounded-lg border border-dashed border-slate-300 p-6 text-center text-sm text-slate-500 dark:border-slate-700">
+      {children}
+    </p>
+  )
+}

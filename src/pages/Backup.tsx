@@ -1,11 +1,17 @@
 import { useState, type ChangeEvent } from 'react'
 import { Card, buttonClass, secondaryButtonClass } from '../components/ui'
 import { todayISO } from '../lib/dates'
-import { buildIcs, download } from '../lib/files'
-import { freshData, isSavedData, useData, withSeedRows } from '../store'
+import { collectDates } from '../lib/deadlines'
+import { download } from '../lib/files'
+import { buildIcs } from '../lib/ics'
+import { useData } from '../state/context'
+import { useEvents } from '../state/hooks'
+import { emptyData, migrate } from '../state/migrate'
+import { seedIds } from '../state/storage'
 
 export default function Backup() {
   const { data, setData } = useData()
+  const { rows: events } = useEvents()
   const [message, setMessage] = useState('')
 
   const exportJson = () => {
@@ -18,11 +24,11 @@ export default function Backup() {
     e.target.value = '' // lets you pick the same file again later
     if (!file) return
     try {
-      const parsed: unknown = JSON.parse(await file.text())
-      if (!isSavedData(parsed)) throw new Error('not a backup from this app')
+      // Old backups (from before the upgrade) are converted to the current format
+      const imported = migrate(JSON.parse(await file.text()), seedIds())
       if (!confirm('Replace ALL current data with this backup?')) return
-      setData(() => withSeedRows(parsed))
-      setMessage(`Imported ${parsed.internships?.length} internships from ${file.name}.`)
+      setData(() => imported)
+      setMessage(`Imported ${file.name}.`)
     } catch (err) {
       setMessage(`Could not import ${file.name}: ${(err as Error).message}`)
     }
@@ -30,7 +36,7 @@ export default function Backup() {
 
   const reset = () => {
     if (!confirm('Delete all your statuses, notes and ticks, and start again from the seed data?')) return
-    setData(() => freshData())
+    setData(() => emptyData())
     setMessage('Reset to the seed data.')
   }
 
@@ -64,11 +70,17 @@ export default function Backup() {
       <Card className="space-y-3">
         <h2 className="font-medium">Calendar</h2>
         <p className="text-sm text-slate-500">
-          Upcoming deadlines and competition dates as an .ics file, with a reminder 7 days before each deadline. Open it
-          with Apple Calendar or import it into Google Calendar. Expected and approximate dates are marked as tentative.
+          Upcoming deadlines and event dates as one .ics file, with a reminder 7 days before each deadline. Open it with
+          Apple Calendar or import it into Google Calendar. Expected and approximate dates are marked as tentative.
         </p>
         <button
-          onClick={() => download('internship-deadlines.ics', buildIcs(), 'text/calendar')}
+          onClick={() =>
+            download(
+              'internship-deadlines.ics',
+              buildIcs(collectDates(events), { skipBefore: todayISO() }),
+              'text/calendar',
+            )
+          }
           className={buttonClass}
         >
           Export deadlines (.ics)

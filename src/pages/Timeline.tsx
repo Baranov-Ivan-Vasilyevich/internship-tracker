@@ -2,7 +2,9 @@
 // Each bar is placed with CSS percentages: left = where it starts, width = how long it is.
 import { CertaintyBadge } from '../components/ui'
 import { MONTH_NAMES, addDays, formatDate, monthEnd, parseDate, todayISO } from '../lib/dates'
-import { KEY_DATES, LEARNING } from '../seed'
+import { collectDates } from '../lib/deadlines'
+import { LEARNING } from '../seed'
+import { useEvents } from '../state/hooks'
 import type { Certainty } from '../types'
 
 const RANGE_START = parseDate('2026-09-01')
@@ -15,18 +17,18 @@ function pct(iso: string) {
   return Math.min(100, Math.max(0, p))
 }
 
-type Kind = 'learning' | 'application' | 'internship' | 'competition'
+type Kind = 'learning' | 'application' | 'internship' | 'event'
 const KIND_STYLE: Record<Kind, string> = {
   learning: 'bg-orange-200 border-orange-500 dark:bg-orange-900/60 dark:border-orange-400',
   application: 'bg-blue-200 border-blue-500 dark:bg-blue-900/60 dark:border-blue-400',
   internship: 'bg-emerald-200 border-emerald-500 dark:bg-emerald-900/60 dark:border-emerald-400',
-  competition: 'bg-violet-200 border-violet-500 dark:bg-violet-900/60 dark:border-violet-400',
+  event: 'bg-violet-200 border-violet-500 dark:bg-violet-900/60 dark:border-violet-400',
 }
 const LEGEND: [Kind, string][] = [
   ['learning', 'Learning'],
   ['application', 'Applications'],
   ['internship', 'Internship'],
-  ['competition', 'Competitions'],
+  ['event', 'Events & competitions'],
 ]
 
 type Row = { id: string; label: string; start: string; end: string; kind: Kind; certainty?: Certainty }
@@ -39,16 +41,6 @@ const learningRows: Row[] = LEARNING.filter((i) => i.track === 'foundation' && i
   end: monthEnd(i.end ?? i.start!),
   kind: 'learning',
 }))
-
-// Applications, internship and competitions from dates.json
-const dateRows: Row[] = KEY_DATES.map((d) => ({
-  id: d.id,
-  label: d.label,
-  start: d.start,
-  end: d.end,
-  kind: d.type,
-  certainty: d.certainty,
-})).sort((a, b) => a.start.localeCompare(b.start))
 
 // Month labels along the top
 const MONTHS = Array.from({ length: 14 }, (_, n) => {
@@ -66,6 +58,11 @@ const LABEL_COL = 'w-40 sm:w-64 sticky left-0 z-20 bg-white dark:bg-slate-900'
 const OVERLAY_LEFT = 'left-40 sm:left-64'
 
 export default function Timeline() {
+  const { rows: events } = useEvents()
+  // Application windows + event dates (including events you added)
+  const dateRows: Row[] = collectDates(events)
+    .map((d) => ({ id: d.id, label: d.label, start: d.start, end: d.end, kind: d.kind, certainty: d.certainty }))
+    .sort((a, b) => a.start.localeCompare(b.start))
   const today = todayISO()
   const todayPct = pct(today)
   const showToday = today >= '2026-09-01' && today < '2027-11-01'
@@ -124,7 +121,7 @@ export default function Timeline() {
           </div>
 
           <Section title="Learning: foundation track" rows={learningRows} />
-          <Section title="Applications, internship & competitions" rows={dateRows} />
+          <Section title="Applications, internship & events" rows={dateRows} />
         </div>
       </div>
     </div>

@@ -6,7 +6,10 @@ import Events from './pages/Events'
 import Internships from './pages/Internships'
 import Learning from './pages/Learning'
 import Projects from './pages/Projects'
+import Resources from './pages/Resources'
 import Timeline from './pages/Timeline'
+import { SEED_ERRORS } from './seed'
+import { useData } from './state/context'
 
 const PAGES = [
   { path: '/', label: 'Dashboard' },
@@ -14,6 +17,7 @@ const PAGES = [
   { path: '/learning', label: 'Learning' },
   { path: '/projects', label: 'Projects' },
   { path: '/events', label: 'Events' },
+  { path: '/resources', label: 'Resources' },
   { path: '/timeline', label: 'Timeline' },
   { path: '/backup', label: 'Backup' },
 ]
@@ -43,7 +47,28 @@ function ThemeToggle() {
   )
 }
 
+// Shown instead of the app when a JSON file in src/data has a mistake
+function DataErrors() {
+  return (
+    <main className="mx-auto max-w-3xl space-y-3 px-4 py-10">
+      <h1 className="text-xl font-semibold text-rose-600">There is a mistake in the data files</h1>
+      <p className="text-sm">Fix these in src/data/ and save; the page reloads by itself.</p>
+      <ul className="list-disc space-y-1 pl-5 font-mono text-sm">
+        {SEED_ERRORS.map((e) => (
+          <li key={e}>{e}</li>
+        ))}
+      </ul>
+    </main>
+  )
+}
+
 export default function App() {
+  if (SEED_ERRORS.length > 0) return <DataErrors />
+  return <Layout />
+}
+
+function Layout() {
+  const { warning } = useData()
   // On a phone the menu scrolls sideways: keep the current page's tab visible
   const { pathname } = useLocation()
   useEffect(() => {
@@ -61,7 +86,7 @@ export default function App() {
               <NavLink
                 key={p.path}
                 to={p.path}
-                end
+                end={p.path === '/'}
                 className={({ isActive }) =>
                   `whitespace-nowrap rounded-md px-3 py-1.5 text-sm ${
                     isActive
@@ -79,12 +104,22 @@ export default function App() {
       </header>
 
       <main className="mx-auto max-w-6xl px-4 py-6">
+        {warning && (
+          <p
+            role="alert"
+            className="mb-4 rounded-md bg-amber-100 px-3 py-2 text-sm text-amber-900 dark:bg-amber-900/40 dark:text-amber-200"
+          >
+            {warning}
+          </p>
+        )}
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/internships" element={<Internships />} />
+          <Route path="/internships/:id" element={<Internships />} />
           <Route path="/learning" element={<Learning />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/backup" element={<Backup />} />
         </Routes>

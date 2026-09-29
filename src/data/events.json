@@ -1,14 +1,62 @@
 [
   {
+    "id": "profinance-forum",
+    "name": "ProFinance career forum",
+    "kind": "event",
+    "track": "",
+    "info": "Career forum in Moscow.",
+    "resources": ["profinance-forum"],
+    "dates": [
+      {
+        "id": "profinance-2026",
+        "label": "ProFinance career forum, Moscow",
+        "start": "2026-10-13",
+        "end": "2026-10-13",
+        "certainty": "official",
+        "deadline": false,
+        "note": "",
+        "startTime": "15:00",
+        "endTime": "19:00"
+      }
+    ]
+  },
+  {
+    "id": "changellenge-autumn",
+    "name": "Autumn Changellenge cup (pick one)",
+    "kind": "case",
+    "track": "G",
+    "info": "Register for one autumn Changellenge cup.",
+    "resources": ["cl-cups"],
+    "dates": [
+      {
+        "id": "changellenge-autumn-reg",
+        "label": "Register for an autumn Changellenge cup",
+        "start": "2026-10-31",
+        "end": "2026-10-31",
+        "certainty": "target",
+        "deadline": true,
+        "note": "Replace with the official deadline once the autumn cup's page shows it."
+      }
+    ]
+  },
+  {
     "id": "data-fusion",
     "name": "Data Fusion Contest",
     "kind": "ml",
     "track": "E",
     "info": "VTB + T1, banking data, on ods.ai. Expected Feb–Mar 2027.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["data-fusion"],
+    "dates": [
+      {
+        "id": "data-fusion-2027",
+        "label": "Data Fusion Contest 2027",
+        "start": "2027-02-01",
+        "end": "2027-03-31",
+        "certainty": "expected",
+        "deadline": true,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "yandex-cup",
@@ -16,10 +64,27 @@
     "kind": "ml",
     "track": "E",
     "info": "2026 registration closes 1 Nov (official); final 27–29 Nov. Aim for the 2027 analytics track.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["yandex-cup", "yandex-cup-final"],
+    "dates": [
+      {
+        "id": "yandex-cup-reg",
+        "label": "Yandex Cup 2026 registration closes",
+        "start": "2026-11-01",
+        "end": "2026-11-01",
+        "certainty": "official",
+        "deadline": true,
+        "note": ""
+      },
+      {
+        "id": "yandex-cup-final",
+        "label": "Yandex Cup 2026 final, Moscow",
+        "start": "2026-11-27",
+        "end": "2026-11-29",
+        "certainty": "official",
+        "deadline": false,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "ai-journey",
@@ -27,10 +92,18 @@
     "kind": "ml",
     "track": "E",
     "info": "20 Oct 2026. Watch only.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["ai-journey"],
+    "dates": [
+      {
+        "id": "ai-journey-deadline",
+        "label": "AI Journey Contest deadline (watch only)",
+        "start": "2026-10-20",
+        "end": "2026-10-20",
+        "certainty": "official",
+        "deadline": false,
+        "note": ""
+      }
+    ]
   },
   {
     "id": "cup-russia",
@@ -38,10 +111,8 @@
     "kind": "case",
     "track": "G",
     "info": "2026 season: registration until 22 Mar, final 29 Apr.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["cl-cup-russia"],
+    "dates": []
   },
   {
     "id": "cup-it",
@@ -49,10 +120,8 @@
     "kind": "case",
     "track": "G",
     "info": "Autumn + spring seasons.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["cl-cup-it"],
+    "dates": []
   },
   {
     "id": "cup-moscow",
@@ -60,10 +129,8 @@
     "kind": "case",
     "track": "G",
     "info": "Autumn + spring seasons.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["cl-cups"],
+    "dates": []
   },
   {
     "id": "school-of-finance",
@@ -71,20 +138,16 @@
     "kind": "case",
     "track": "G",
     "info": "Enter again next season with a model you built yourself.",
-    "link": "",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "resources": ["school-of-finance"],
+    "dates": []
   },
   {
     "id": "sber-rr-open-days",
     "name": "Sber Risk Research open days",
     "kind": "event",
     "track": "D",
-    "info": "Attend each open day and ask what their interns knew on day one.",
-    "link": "https://t.me/FinCareer/4211",
-    "status": "Interested",
-    "notes": "",
-    "rounds": []
+    "info": "Attend each open day and ask what their interns knew on day one. Links: see the Sber Risk Research internship.",
+    "resources": [],
+    "dates": []
   }
 ]

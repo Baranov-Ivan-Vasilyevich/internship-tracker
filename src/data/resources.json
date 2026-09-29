@@ -1,0 +1,443 @@
+[
+  {
+    "id": "stepik-python",
+    "title": "«Поколение Python»: курс для начинающих",
+    "url": "https://stepik.org/course/58852/promo",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "stepik-python-adv",
+    "title": "«Поколение Python»: курс для продвинутых (optional next step)",
+    "url": "https://stepik.org/course/68343/promo",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-learn",
+    "title": "Kaggle Learn (all courses)",
+    "url": "https://www.kaggle.com/learn",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-python",
+    "title": "Kaggle Learn: Python",
+    "url": "https://www.kaggle.com/learn/python",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-pandas",
+    "title": "Kaggle Learn: Pandas",
+    "url": "https://www.kaggle.com/learn/pandas",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-dataviz",
+    "title": "Kaggle Learn: Data Visualization",
+    "url": "https://www.kaggle.com/learn/data-visualization",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-intro-ml",
+    "title": "Kaggle Learn: Intro to ML",
+    "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-inter-ml",
+    "title": "Kaggle Learn: Intermediate ML",
+    "url": "https://www.kaggle.com/learn/intermediate-machine-learning",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "kaggle-feat-eng",
+    "title": "Kaggle Learn: Feature Engineering",
+    "url": "https://www.kaggle.com/learn/feature-engineering",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "apimoex",
+    "title": "apimoex (Python client for MOEX ISS)",
+    "url": "https://github.com/WLM1ke/apimoex",
+    "type": "tool",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "apimoex-docs",
+    "title": "apimoex documentation",
+    "url": "https://wlm1ke.github.io/apimoex/",
+    "type": "docs",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "moex-iss",
+    "title": "MOEX ISS programming interface",
+    "url": "https://www.moex.com/a2920",
+    "type": "docs",
+    "lang": "RU/EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "stepik-sql",
+    "title": "Интерактивный тренажер по SQL",
+    "url": "https://stepik.org/course/63054/promo",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "sql-academy",
+    "title": "SQL Academy trainer",
+    "url": "https://sql-academy.org/ru/trainer",
+    "type": "practice",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "stepik-stats-1",
+    "title": "Основы статистики",
+    "url": "https://stepik.org/course/76/promo",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "stepik-stats-2",
+    "title": "Основы статистики. Часть 2",
+    "url": "https://stepik.org/course/524/promo",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "stepik-stats-3",
+    "title": "Основы статистики. Часть 3",
+    "url": "https://stepik.org/course/2152/promo",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "yandex-math",
+    "title": "Хендбук по математике для анализа данных",
+    "url": "https://education.yandex.ru/handbook/math",
+    "type": "book",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "yandex-ml",
+    "title": "Учебник по машинному обучению (ШАД)",
+    "url": "https://education.yandex.ru/handbook/ml",
+    "type": "book",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "ods-ml",
+    "title": "ODS open ML course",
+    "url": "https://ods.ai/tracks/open-ml-course/about",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "mlcourse",
+    "title": "mlcourse.ai",
+    "url": "https://mlcourse.ai",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "dls",
+    "title": "Deep Learning School (МФТИ)",
+    "url": "https://dls.samcs.ru/",
+    "type": "course",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "karpathy",
+    "title": "Neural Networks: Zero to Hero",
+    "url": "https://karpathy.ai/zero-to-hero.html",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "hf-llm",
+    "title": "Hugging Face LLM Course",
+    "url": "https://huggingface.co/learn/llm-course/chapter1/1",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "catboost",
+    "title": "CatBoost documentation",
+    "url": "https://catboost.ai",
+    "type": "docs",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "datalens",
+    "title": "Yandex DataLens",
+    "url": "https://datalens.ru/",
+    "type": "tool",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "damodaran",
+    "title": "Damodaran Online (valuation lectures, data)",
+    "url": "https://pages.stern.nyu.edu/~adamodar/",
+    "type": "course",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "mi-400",
+    "title": "400 Investment Banking Interview Questions",
+    "url": "https://mergersandinquisitions.com/400-questions-investment-banking/",
+    "type": "guide",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "shl",
+    "title": "SHL practice tests",
+    "url": "https://www.shl.com/shldirect/en/practice-tests/",
+    "type": "practice",
+    "lang": "EN",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "fso",
+    "title": "ФСО I–VI (Приказ Минэкономразвития № 200)",
+    "url": "https://base.garant.ru/404525594/",
+    "type": "regulation",
+    "lang": "RU",
+    "cost": "free",
+    "verified": null
+  },
+  {
+    "id": "cbr-845p",
+    "title": "Положение Банка России 845-П",
+    "url": "https://normativ.kontur.ru/document?documentId=487294&moduleId=1",
+    "type": "regulation",
+    "lang": "RU",
+    "cost": "free",
+    "verified": "2026-09-28"
+  },
+  {
+    "id": "tedo-validation",
+    "title": "ТеДо Academy: моделирование и валидация в банках",
+    "url": "https://training.tedo.ru/event/modeling-and-validation/",
+    "type": "course",
+    "lang": "RU",
+    "cost": "paid",
+    "verified": "2026-09-28"
+  },
+  {
+    "id": "book-rosenbaum",
+    "title": "Rosenbaum & Pearl, \"Investment Banking\"",
+    "url": null,
+    "type": "book",
+    "lang": "EN",
+    "cost": "paid",
+    "verified": null
+  },
+  {
+    "id": "book-hull",
+    "title": "Hull, \"Options, Futures and Other Derivatives\"",
+    "url": null,
+    "type": "book",
+    "lang": "EN",
+    "cost": "paid",
+    "verified": null
+  },
+  {
+    "id": "titanic",
+    "title": "Kaggle: Titanic",
+    "url": "https://www.kaggle.com/competitions/titanic",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "playground",
+    "title": "Kaggle Playground Series",
+    "url": "https://www.kaggle.com/competitions?hostSegmentIdFilter=8",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "give-me-credit",
+    "title": "Kaggle: Give Me Some Credit",
+    "url": "https://www.kaggle.com/c/GiveMeSomeCredit",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "home-credit",
+    "title": "Kaggle: Home Credit Default Risk",
+    "url": "https://www.kaggle.com/c/home-credit-default-risk",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "kaggle-progression",
+    "title": "Kaggle progression system",
+    "url": "https://www.kaggle.com/progression",
+    "type": "guide",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "data-fusion",
+    "title": "Data Fusion Contest (VTB + T1, ODS)",
+    "url": "https://ods.ai/tracks/data-fusion-2026-competitions",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "yandex-cup",
+    "title": "Yandex Cup",
+    "url": "https://yandex.ru/cup/",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "yandex-cup-final",
+    "title": "Yandex Cup 2026 final, Moscow",
+    "url": "https://ict2go.ru/events/72403/",
+    "type": "event",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "ai-journey",
+    "title": "AI Journey Contest 2026",
+    "url": "https://ict2go.ru/events/71679/",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "cl-cups",
+    "title": "Changellenge championships",
+    "url": "https://changellenge.com/tpage/cups/",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "cl-cup-russia",
+    "title": "Changellenge Cup Russia 2026",
+    "url": "https://changellenge.com/championships/changellenge-cup-russia-2026/",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "cl-cup-it",
+    "title": "Changellenge Cup IT 2026",
+    "url": "https://changellenge.com/championships/changellenge-cup-it-2026/",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": "2026-09-29"
+  },
+  {
+    "id": "school-of-finance",
+    "title": "School of Finance case competition",
+    "url": "https://sfinance.org/case_competition",
+    "type": "competition",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "profinance-forum",
+    "title": "ProFinance career forum",
+    "url": "https://events.fut.ru/",
+    "type": "event",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  },
+  {
+    "id": "fincareer-feed",
+    "title": "FinCareer career feed (Telegram)",
+    "url": "https://t.me/s/FinCareer",
+    "type": "feed",
+    "lang": null,
+    "cost": null,
+    "verified": null
+  }
+]

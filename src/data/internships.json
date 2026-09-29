@@ -5,16 +5,31 @@
     "role": "Практикант, оценка бизнеса",
     "whatYouDo": "Business valuation",
     "qualify": "Now",
-    "qualifyNow": true,
     "hours": "Not stated",
     "applicationWindow": "Open now",
     "ibFit": "High",
     "mlFit": "Low",
     "link": "https://hh.ru/vacancy/135857625",
     "tracks": ["A"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": ["CV (hh.ru or ru_career@tedo.ru)", "Online assessment", "Video interview", "Department interview"],
+    "sources": [
+      {
+        "kind": "vacancy",
+        "url": "https://hh.ru/vacancy/135857625",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://hh.ru/employer/1201",
+        "verified": null
+      },
+      {
+        "kind": "official",
+        "url": "https://www.fa.ru/university/structure/education/dir-career/utrk/careerweek/tedo/",
+        "verified": null
+      }
+    ]
   },
   {
     "id": "tedo-validation",
@@ -22,16 +37,31 @@
     "role": "Практикант, валидация моделей",
     "whatYouDo": "Checking banks' risk models",
     "qualify": "Now",
-    "qualifyNow": true,
     "hours": "Part-time",
     "applicationWindow": "Open now",
     "ibFit": "Medium",
     "mlFit": "High",
     "link": "https://hh.ru/vacancy/135212682",
     "tracks": ["B"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": ["CV (hh.ru or ru_career@tedo.ru)", "Online assessment", "Video interview", "Department interview"],
+    "sources": [
+      {
+        "kind": "vacancy",
+        "url": "https://hh.ru/vacancy/135212682",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://hh.ru/employer/1201",
+        "verified": null
+      },
+      {
+        "kind": "official",
+        "url": "https://www.fa.ru/university/structure/education/dir-career/utrk/careerweek/tedo/",
+        "verified": null
+      }
+    ]
   },
   {
     "id": "tedo-fin-risk",
@@ -39,16 +69,31 @@
     "role": "Практикант, риски в финсекторе",
     "whatYouDo": "Risk consulting for banks",
     "qualify": "Now",
-    "qualifyNow": true,
     "hours": "Part-time",
     "applicationWindow": "Open now",
     "ibFit": "Medium",
     "mlFit": "Medium",
     "link": "https://hh.ru/vacancy/134806632",
     "tracks": ["B"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": ["CV (hh.ru or ru_career@tedo.ru)", "Online assessment", "Video interview", "Department interview"],
+    "sources": [
+      {
+        "kind": "vacancy",
+        "url": "https://hh.ru/vacancy/134806632",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://hh.ru/employer/1201",
+        "verified": null
+      },
+      {
+        "kind": "official",
+        "url": "https://www.fa.ru/university/structure/education/dir-career/utrk/careerweek/tedo/",
+        "verified": null
+      }
+    ]
   },
   {
     "id": "tedo-bank-audit",
@@ -56,16 +101,31 @@
     "role": "Практикант, аудит банков",
     "whatYouDo": "Audit of banks",
     "qualify": "Now",
-    "qualifyNow": true,
     "hours": "Part-time",
     "applicationWindow": "Open now",
     "ibFit": "Low",
     "mlFit": "Low",
     "link": "https://hh.ru/vacancy/134608846",
     "tracks": [],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": ["CV (hh.ru or ru_career@tedo.ru)", "Online assessment", "Video interview", "Department interview"],
+    "sources": [
+      {
+        "kind": "vacancy",
+        "url": "https://hh.ru/vacancy/134608846",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://hh.ru/employer/1201",
+        "verified": null
+      },
+      {
+        "kind": "official",
+        "url": "https://www.fa.ru/university/structure/education/dir-career/utrk/careerweek/tedo/",
+        "verified": null
+      }
+    ]
   },
   {
     "id": "sber-risk-research",
@@ -73,16 +133,27 @@
     "role": "Risk Research",
     "whatYouDo": "Risk Quant, DS, LLM research",
     "qualify": "Now on paper; skills first",
-    "qualifyNow": true,
     "hours": "Not stated",
     "applicationWindow": "Recruiting now",
     "ibFit": "Medium",
     "mlFit": "High",
     "link": "https://t.me/FinCareer/4211",
     "tracks": ["D"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": [],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://t.me/FinCareer/4211",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "registration",
+        "url": "https://www.sberbank.ru/ru/person/forms/riskteam",
+        "verified": null
+      }
+    ],
+    "stagesNote": "TODO: verify — ask at the open day"
   },
   {
     "id": "sber-internships",
@@ -90,50 +161,85 @@
     "role": "Internships",
     "whatYouDo": "Finance, analytics, DS",
     "qualify": "Now (CIB from 3rd year)",
-    "qualifyNow": true,
     "hours": "20–40",
     "applicationWindow": "All year; main wave in spring",
     "ibFit": "Medium",
     "mlFit": "Medium",
     "link": "https://student.sber.ru/internship",
     "tracks": ["B", "C"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": ["CV screening", "Online tests (~1 h)", "Video interview", "Technical interview", "Security check"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://student.sber.ru/internship",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "guide",
+        "url": "https://enigmai.ru/interview/sber/sber-internship/",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
-    "id": "bank-of-russia",
+    "id": "cbr-spring",
     "company": "Bank of Russia",
     "role": "Spring internship",
     "whatYouDo": "Markets, monetary policy, analytics",
     "qualify": "Now (from 2nd year)",
-    "qualifyNow": true,
     "hours": "Up to 20",
     "applicationWindow": "Expected Oct–early Nov 2026",
     "ibFit": "Medium",
     "mlFit": "Medium",
     "link": "https://www.cbr.ru/about_br/career/internship/",
     "tracks": ["B"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": ["Application form", "Online tests", "Video interview", "Final interview"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://www.cbr.ru/about_br/career/internship/",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://www.cbr.ru/press/event/?id=26925",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
-    "id": "alfa-bank",
+    "id": "alfa",
     "company": "Alfa-Bank",
     "role": "Internships",
     "whatYouDo": "Risk, corporate business, DS",
     "qualify": "Now (years 2–5)",
-    "qualifyNow": true,
     "hours": "20–40",
     "applicationWindow": "Jan–Mar and Apr–Jun 2027",
     "ibFit": "Medium",
     "mlFit": "Medium",
     "link": "https://lab-career.ru/knowledge-base/stazhirovka-v-alfa-banke-2026-kak-popast",
     "tracks": ["B", "C"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2026-09",
+    "stages": [
+      "Application + motivation answers",
+      "Online tests",
+      "Technical + HR interviews",
+      "Final stage (sometimes group work)"
+    ],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://alfabank.ru/alfafuture/ichoosealfa/",
+        "verified": null
+      },
+      {
+        "kind": "guide",
+        "url": "https://lab-career.ru/knowledge-base/stazhirovka-v-alfa-banke-2026-kak-popast",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
     "id": "moex-summer",
@@ -141,16 +247,31 @@
     "role": "MOEX Summer",
     "whatYouDo": "Equities, derivatives, FX desks",
     "qualify": "Summer 2027 (years 2–3)",
-    "qualifyNow": false,
     "hours": "Summer only",
     "applicationWindow": "Mar–Apr 2027",
     "ibFit": "Medium",
     "mlFit": "Low",
     "link": "https://edunews.ru/students/primenenie/praktika-na-moskovskoj-birzhe.html",
     "tracks": ["A", "F"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2027-03",
+    "stages": ["Application + CV", "Review", "Possible interview", "Possible case rounds", "HR meeting"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://career.moex.com/intership",
+        "verified": null
+      },
+      {
+        "kind": "guide",
+        "url": "https://edunews.ru/students/primenenie/praktika-na-moskovskoj-birzhe.html",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "guide",
+        "url": "https://changellenge.com/company/moex/",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
     "id": "sber-cib",
@@ -158,33 +279,58 @@
     "role": "CIB",
     "whatYouDo": "Investment banking",
     "qualify": "Autumn 2027 (3rd year)",
-    "qualifyNow": false,
     "hours": "20–40",
     "applicationWindow": "All year",
     "ibFit": "High",
     "mlFit": "Low",
     "link": "https://student.sber.ru/internship",
     "tracks": ["A"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2027-09",
+    "stages": ["CV screening", "Online tests (~1 h)", "Video interview", "Technical interview", "Security check"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://student.sber.ru/internship",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "guide",
+        "url": "https://enigmai.ru/interview/sber/sber-internship/",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
-    "id": "b1-ta",
+    "id": "b1-tas",
     "company": "B1",
     "role": "Transaction Advisory",
     "whatYouDo": "Modeling, valuation, M&A",
     "qualify": "Autumn 2027 (years 3–5)",
-    "qualifyNow": false,
     "hours": "Part-time options",
     "applicationWindow": "Rolling",
     "ibFit": "High",
     "mlFit": "Low",
     "link": "https://lab-career.ru/knowledge-base/stazhirovka-v-b1-2026-ex-ey",
     "tracks": ["A"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2027-09",
+    "stages": ["Online tests", "Video interview (VCV)", "Recruiter interview", "Manager/partner interviews"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://hh.ru/employer/4900",
+        "verified": null
+      },
+      {
+        "kind": "guide",
+        "url": "https://lab-career.ru/knowledge-base/stazhirovka-v-b1-2026-ex-ey",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "guide",
+        "url": "https://changellenge.com/company/b1/",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
     "id": "tbank-tstart",
@@ -192,33 +338,54 @@
     "role": "T-Start",
     "whatYouDo": "Data analytics, DS",
     "qualify": "Usually 3rd year+",
-    "qualifyNow": false,
     "hours": "20–30",
     "applicationWindow": "Every 2–3 months",
     "ibFit": "Low",
     "mlFit": "High",
     "link": "https://lab-career.ru/knowledge-base/stazhirovka-v-t-banke-2026-programma-t-start-usloviya",
     "tracks": ["C"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2027-09",
+    "stages": ["Application", "Role task (90–120 min)", "HR video (20–30 min)", "Technical interview (60–90 min)"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://education.tbank.ru/start/analyst/",
+        "verified": null
+      },
+      {
+        "kind": "guide",
+        "url": "https://lab-career.ru/knowledge-base/stazhirovka-v-t-banke-2026-programma-t-start-usloviya",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
-    "id": "drt-school",
+    "id": "drt-young-cfo",
     "company": "DRT",
     "role": "Школа молодого финансиста",
     "whatYouDo": "3-week school: valuation, M&A, audit",
     "qualify": "Years 3–4 (summer 2027 or 2028)",
-    "qualifyNow": false,
     "hours": "Mon–Thu 11:00–15:30",
     "applicationWindow": "Summer; the 2026 school began 3 Aug",
     "ibFit": "Medium",
     "mlFit": "Low",
     "link": "https://delret.ru/young-cfo-school",
     "tracks": ["A"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2028-06",
+    "eligibilityNote": "Ask DRT, maybe 2027",
+    "stages": ["Registration form", "Short motivation video"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://delret.ru/young-cfo-school",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://delret.ru/consulting-internship",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
     "id": "gpb-experience",
@@ -226,16 +393,26 @@
     "role": "GPB.Experience",
     "whatYouDo": "Financial analytics, risk, direct investments",
     "qualify": "Spring 2028 (years 3–4)",
-    "qualifyNow": false,
     "hours": "25–40",
     "applicationWindow": "May–June, start in July",
     "ibFit": "High",
     "mlFit": "Medium",
     "link": "https://gpb.fut.ru/experience/",
     "tracks": ["A", "B"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2028-05",
+    "stages": ["Application", "Online tests", "Video interview", "In-person interview", "Start in July"],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://gpb.fut.ru/experience/",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "official",
+        "url": "https://www.fa.ru/employment/news/gpb-experience-programma-stazhirovki-ot-gazprombanka",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
     "id": "vtb-junior",
@@ -243,16 +420,32 @@
     "role": "VTB Junior",
     "whatYouDo": "CIB, analytics, risk",
     "qualify": "Summer 2028 (final year)",
-    "qualifyNow": false,
     "hours": "40",
     "applicationWindow": "Until about 20 May, start 1 July",
     "ibFit": "High",
     "mlFit": "Medium",
     "link": "https://changellenge.com/event/vtb-unior-go/",
     "tracks": ["A"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2028-05",
+    "stages": [
+      "Application (until ~20 May)",
+      "Phone interview",
+      "Online tests (3 days)",
+      "Final interviews (by 30 June)",
+      "Offer"
+    ],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://rabota.vtb.ru/internship/vtb-yunior/",
+        "verified": null
+      },
+      {
+        "kind": "guide",
+        "url": "https://changellenge.com/event/vtb-unior-go/",
+        "verified": "2026-09-28"
+      }
+    ]
   },
   {
     "id": "kept",
@@ -260,32 +453,52 @@
     "role": "",
     "whatYouDo": "Consulting, deals, audit",
     "qualify": "Autumn 2028 (final year)",
-    "qualifyNow": false,
     "hours": "25+",
     "applicationWindow": "Rolling",
     "ibFit": "Medium",
     "mlFit": "Low",
     "link": "https://kept.ru/career/vacancies/?experience%5B0%5D=noExperience&country=ru",
     "tracks": ["A"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2028-09",
+    "stages": [
+      "Application",
+      "Numerical/verbal tests",
+      "Video interview (checks English)",
+      "Team interview on provided materials"
+    ],
+    "sources": [
+      {
+        "kind": "official",
+        "url": "https://kept.ru/career/vacancies/?experience%5B0%5D=noExperience&country=ru",
+        "verified": "2026-09-28"
+      },
+      {
+        "kind": "guide",
+        "url": "https://fut.ru/internship/kept/kept-consulting",
+        "verified": null
+      }
+    ]
   },
   {
-    "id": "vim-investments",
+    "id": "vim",
     "company": "VIM Investments",
     "role": "12-month program",
     "whatYouDo": "Portfolio & alternative investments",
     "qualify": "After graduation",
-    "qualifyNow": false,
     "hours": "40",
     "applicationWindow": "2026 intake closed 15 June, start 1 July",
     "ibFit": "Medium",
     "mlFit": "Low",
     "link": "https://changellenge.com/event/internship-wim/",
     "tracks": ["F"],
-    "status": "Not started",
-    "notes": "",
-    "dateApplied": ""
+    "eligibleFrom": "2029-06",
+    "stages": ["CV", "Phone interview", "Assessment center", "Manager interview", "Final"],
+    "sources": [
+      {
+        "kind": "guide",
+        "url": "https://changellenge.com/event/internship-wim/",
+        "verified": "2026-09-29"
+      }
+    ]
   }
 ]

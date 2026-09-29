@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ResourceLink } from '../components/ResourceLink'
 import { Card, ProgressBar, secondaryButtonClass } from '../components/ui'
 import { currentMonth } from '../lib/dates'
 import { LEARNING, TRACKS, isActive, projectById } from '../seed'
-import { useData, useToggle } from '../store'
+import { useData } from '../state/context'
+import { useEvents, useToggle } from '../state/hooks'
 import type { LearningItem } from '../types'
 
 export default function Learning() {
   const { data } = useData()
+  const { rows: allEvents } = useEvents()
   const toggle = useToggle()
   const done = new Set(data.learningDone)
   const month = currentMonth()
@@ -45,7 +48,7 @@ export default function Learning() {
       {TRACKS.map((track) => {
         const items = LEARNING.filter((i) => i.track === track.id)
         const trackDone = items.filter((i) => done.has(i.id)).length
-        const events = data.events.filter((e) => e.track === track.id)
+        const events = allEvents.filter((e) => e.track === track.id)
         const isOpen = open.has(track.id)
         return (
           <Card key={track.id} className="space-y-2">
@@ -58,6 +61,17 @@ export default function Learning() {
               <span className="flex-1 font-medium">{track.name}</span>
             </button>
             <ProgressBar done={trackDone} total={items.length} />
+
+            {isOpen && track.resources.length > 0 && (
+              <div className="text-xs">
+                <span className="font-medium text-slate-600 dark:text-slate-300">Track resources: </span>
+                <span className="inline-flex flex-wrap gap-x-3 gap-y-1">
+                  {track.resources.map((id) => (
+                    <ResourceLink key={id} id={id} />
+                  ))}
+                </span>
+              </div>
+            )}
 
             {isOpen && (
               <ul className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -87,7 +101,7 @@ export default function Learning() {
                       <span className="font-medium">{e.name}</span>
                       <span className="text-slate-500">
                         {' '}
-                        · {e.status} · {e.info}
+                        · {e.state.status} · {e.info}
                       </span>
                     </li>
                   ))}
@@ -125,21 +139,9 @@ function LearningRow({ item, done, active, onToggle }: RowProps) {
               now
             </span>
           )}
-          {item.resources.map((r) =>
-            r.url ? (
-              <a
-                key={r.label}
-                href={r.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:underline dark:text-blue-400"
-              >
-                {r.label} ↗
-              </a>
-            ) : (
-              <span key={r.label}>{r.label}</span>
-            ),
-          )}
+          {item.resources.map((id) => (
+            <ResourceLink key={id} id={id} />
+          ))}
         </div>
         {(item.proof || project) && (
           <div className="text-xs">

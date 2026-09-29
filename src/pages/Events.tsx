@@ -1,12 +1,27 @@
 import { useState } from 'react'
-import { Card, CertaintyBadge, TrackTags, buttonClass, secondaryButtonClass } from '../components/ui'
-import { formatDate, inDaysText, todayISO } from '../lib/dates'
-import { KEY_DATES } from '../seed'
-import { useEvents } from '../store'
+import { ResourceLink } from '../components/ResourceLink'
 import {
+  Card,
+  CertaintyBadge,
+  EmptyState,
+  ExternalLink,
+  TrackTags,
+  buttonClass,
+  inputClass,
+  secondaryButtonClass,
+} from '../components/ui'
+import { formatDate, inDaysText, todayISO } from '../lib/dates'
+import { collectDates, upcomingDates, type DatedItem } from '../lib/deadlines'
+import { download } from '../lib/files'
+import { buildIcs } from '../lib/ics'
+import { useEvents, type EventRow } from '../state/hooks'
+import {
+  CERTAINTIES,
   EVENT_KINDS,
   EVENT_STATUSES,
   INTERNSHIP_TRACKS,
+  type Certainty,
+  type Dated,
   type EventEntry,
   type EventKind,
   type EventStatus,
@@ -21,24 +36,36 @@ const STATUS_COLORS: Record<EventStatus, string> = {
   Skipped: 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300',
 }
 
-const inputClass =
-  'rounded-md border border-slate-300 bg-white px-2 py-1 text-sm dark:border-slate-700 dark:bg-slate-900'
+// "13 Oct 2026, 15:00–19:00 (Moscow)" or "27 Nov 2026 – 29 Nov 2026"
+function whenText(d: Dated) {
+  const days = d.start === d.end ? formatDate(d.end) : `${formatDate(d.start)} – ${formatDate(d.end)}`
+  return d.startTime ? `${days}, ${d.startTime}–${d.endTime} (Moscow)` : days
+}
+
+// Download one date as its own calendar file
+function IcsButton({ item }: { item: DatedItem }) {
+  return (
+    <button
+      onClick={() => download(`${item.id}.ics`, buildIcs([item]), 'text/calendar')}
+      className="text-xs text-blue-600 hover:underline dark:text-blue-400"
+      aria-label={`Add “${item.label}” to calendar`}
+    >
+      + calendar
+    </button>
+  )
+}
 
 export default function Events() {
-  const { events, add } = useEvents()
+  const { rows: events, add } = useEvents()
   const [showAdd, setShowAdd] = useState(false)
   const today = todayISO()
-
-  // Competition dates from dates.json that haven't passed yet
-  const upcoming = KEY_DATES.filter((d) => d.type === 'competition' && d.end >= today).sort((a, b) =>
-    a.start.localeCompare(b.start),
-  )
+  const upcoming = upcomingDates(collectDates(events), today).filter((d) => d.kind === 'event')
 
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-xl font-semibold">Championships & events</h1>
-        <button onClick={() => setShowAdd(!showAdd)} className={buttonClass}>
+        <button onClick={() => setShowAdd(!showAdd)} className={buttonClass} aria-expanded={showAdd}>
           {showAdd ? 'Cancel' : '+ Add event'}
         </button>
       </div>
@@ -63,9 +90,9 @@ export default function Events() {
                   <span className="font-medium">{d.label}</span>
                   <CertaintyBadge value={d.certainty} />
                 </div>
-                <div className="text-slate-500">
-                  {d.start === d.end ? formatDate(d.end) : `${formatDate(d.start)} – ${formatDate(d.end)}`} ·{' '}
-                  {inDaysText(d.start > today ? d.start : d.end)}
+                <div className="flex flex-wrap gap-x-2 text-slate-500">
+                  {whenText(d)} · {inDaysText(d.start > today ? d.start : d.end)}
+                  <IcsButton item={d} />
                 </div>
               </li>
             ))}
@@ -79,6 +106,8 @@ export default function Events() {
           </ul>
         </Card>
       </div>
+
+      {events.length === 0 && <EmptyState>No events yet. Add one with “+ Add event”.</EmptyState>}
 
       {(Object.keys(EVENT_KINDS) as EventKind[]).map((kind) => {
         const list = events.filter((e) => e.kind === kind)
@@ -100,21 +129,16 @@ export default function Events() {
 
 // ---------- one event ----------
 
-function EventCard({ event: e }: { event: EventEntry }) {
+function EventCard({ event: e }: { event: EventRow }) {
   const { update, remove, addRound, removeRound } = useEvents()
   const [logging, setLogging] = useState(false)
+  const s = e.state
 
   return (
     <Card className="space-y-3">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          {e.link ? (
-            <a href={e.link} target="_blank" rel="noreferrer" className="font-medium hover:underline">
-              {e.name} ↗
-            </a>
-          ) : (
-            <span className="font-medium">{e.name}</span>
-          )}
+          <h3 className="font-medium">{e.name}</h3>
           {e.info && <div className="text-sm text-slate-500">{e.info}</div>}
         </div>
         <div className="flex items-center gap-2">
@@ -130,18 +154,43 @@ function EventCard({ event: e }: { event: EventEntry }) {
         </div>
       </div>
 
+      {(e.resources.length > 0 || e.link) && (
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
+          {e.resources.map((id) => (
+            <ResourceLink key={id} id={id} />
+          ))}
+          {e.link && <ExternalLink href={e.link}>Link</ExternalLink>}
+        </div>
+      )}
+
+      {e.dates.length > 0 && (
+        <ul className="space-y-1 text-sm">
+          {e.dates.map((d) => (
+            <li key={d.id} className="flex flex-wrap items-center gap-x-2">
+              <span>{d.label}:</span>
+              <span className="text-slate-500">{whenText(d)}</span>
+              <CertaintyBadge value={d.certainty} />
+              <IcsButton item={{ ...d, kind: 'event', eventId: e.id }} />
+              {d.note && <span className="w-full text-xs text-slate-400">{d.note}</span>}
+            </li>
+          ))}
+        </ul>
+      )}
+
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
         <select
-          value={e.status}
+          aria-label={`Status for ${e.name}`}
+          value={s.status}
           onChange={(ev) => update(e.id, { status: ev.target.value as EventStatus })}
-          className={`rounded-md border-0 px-2 py-1 text-sm font-medium ${STATUS_COLORS[e.status]}`}
+          className={`rounded-md border-0 px-2 py-1 text-sm font-medium ${STATUS_COLORS[s.status]}`}
         >
-          {EVENT_STATUSES.map((s) => (
-            <option key={s}>{s}</option>
+          {EVENT_STATUSES.map((x) => (
+            <option key={x}>{x}</option>
           ))}
         </select>
         <textarea
-          value={e.notes}
+          aria-label={`Notes for ${e.name}`}
+          value={s.notes}
           onChange={(ev) => update(e.id, { notes: ev.target.value })}
           rows={1}
           placeholder="Notes: team, registration link, deadlines…"
@@ -151,9 +200,9 @@ function EventCard({ event: e }: { event: EventEntry }) {
 
       {/* Round log */}
       <div className="space-y-2">
-        {e.rounds.length > 0 && (
+        {s.rounds.length > 0 && (
           <ul className="space-y-2 border-l-2 border-slate-200 pl-3 dark:border-slate-700">
-            {e.rounds.map((r) => (
+            {s.rounds.map((r) => (
               <li key={r.id} className="text-sm">
                 <div className="flex flex-wrap items-center gap-x-2">
                   <span className="font-medium">{r.round || 'Round'}</span>
@@ -162,7 +211,7 @@ function EventCard({ event: e }: { event: EventEntry }) {
                   <button
                     onClick={() => confirm('Delete this round?') && removeRound(e.id, r.id)}
                     className="ml-auto text-xs text-slate-400 hover:text-rose-600"
-                    aria-label="Delete round"
+                    aria-label={`Delete round ${r.round}`}
                   >
                     ✕
                   </button>
@@ -205,18 +254,21 @@ function RoundForm({ onSave, onCancel }: { onSave: (r: Round) => void; onCancel:
       <div className="flex flex-wrap gap-2">
         <input
           type="date"
+          aria-label="Round date"
           value={r.date}
           onChange={(ev) => setR({ ...r, date: ev.target.value })}
           className={inputClass}
         />
         <input
           required
+          aria-label="Round name"
           value={r.round}
           onChange={(ev) => setR({ ...r, round: ev.target.value })}
           placeholder="Round, e.g. Qualifying round"
           className={`${inputClass} flex-1`}
         />
         <input
+          aria-label="Result"
           value={r.result}
           onChange={(ev) => setR({ ...r, result: ev.target.value })}
           placeholder="Result, e.g. top 20 of 150"
@@ -224,6 +276,7 @@ function RoundForm({ onSave, onCancel }: { onSave: (r: Round) => void; onCancel:
         />
       </div>
       <textarea
+        aria-label="What I personally did"
         value={r.whatIDid}
         onChange={(ev) => setR({ ...r, whatIDid: ev.target.value })}
         rows={3}
@@ -243,12 +296,29 @@ function RoundForm({ onSave, onCancel }: { onSave: (r: Round) => void; onCancel:
 }
 
 function AddEventForm({ onAdd }: { onAdd: (e: EventEntry) => void }) {
-  const [e, setE] = useState({ name: '', kind: 'case' as EventKind, track: 'G', info: '', link: '' })
+  const [e, setE] = useState({ name: '', kind: 'case' as EventKind, track: '', info: '', link: '' })
+  // Optional date, so the event also shows on the Dashboard, Timeline and in the calendar export
+  const [date, setDate] = useState({ start: '', end: '', certainty: 'official' as Certainty, deadline: false })
+
   return (
     <form
       onSubmit={(ev) => {
         ev.preventDefault()
-        onAdd({ ...e, id: crypto.randomUUID(), status: 'Interested', notes: '', rounds: [], custom: true })
+        const id = crypto.randomUUID()
+        const dates: Dated[] = date.start
+          ? [
+              {
+                id: `${id}-date`,
+                label: e.name,
+                start: date.start,
+                end: date.end && date.end >= date.start ? date.end : date.start,
+                certainty: date.certainty,
+                deadline: date.deadline,
+                note: '',
+              },
+            ]
+          : []
+        onAdd({ ...e, id, resources: [], dates })
       }}
       className="grid gap-3 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-2 dark:border-slate-800 dark:bg-slate-900"
     >
@@ -293,19 +363,61 @@ function AddEventForm({ onAdd }: { onAdd: (e: EventEntry) => void }) {
         <input
           value={e.info}
           onChange={(ev) => setE({ ...e, info: ev.target.value })}
-          placeholder="Dates, format, who organises it"
+          placeholder="Format, who organises it"
           className={inputClass}
         />
       </label>
       <label className="flex flex-col gap-1 text-sm">
         Link
         <input
+          type="url"
           value={e.link}
           onChange={(ev) => setE({ ...e, link: ev.target.value })}
           placeholder="https://…"
           className={inputClass}
         />
       </label>
+      <fieldset className="flex flex-wrap items-end gap-3 text-sm sm:col-span-2">
+        <legend className="mb-1 text-slate-500">Date (optional)</legend>
+        <label className="flex flex-col gap-1">
+          From
+          <input
+            type="date"
+            value={date.start}
+            onChange={(ev) => setDate({ ...date, start: ev.target.value })}
+            className={inputClass}
+          />
+        </label>
+        <label className="flex flex-col gap-1">
+          To (optional)
+          <input
+            type="date"
+            value={date.end}
+            onChange={(ev) => setDate({ ...date, end: ev.target.value })}
+            className={inputClass}
+          />
+        </label>
+        <label className="flex flex-col gap-1">
+          Badge
+          <select
+            value={date.certainty}
+            onChange={(ev) => setDate({ ...date, certainty: ev.target.value as Certainty })}
+            className={inputClass}
+          >
+            {CERTAINTIES.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+        </label>
+        <label className="flex items-center gap-1 pb-1">
+          <input
+            type="checkbox"
+            checked={date.deadline}
+            onChange={(ev) => setDate({ ...date, deadline: ev.target.checked })}
+          />
+          It's a deadline
+        </label>
+      </fieldset>
       <div className="sm:col-span-2">
         <button type="submit" className={buttonClass}>
           Save event

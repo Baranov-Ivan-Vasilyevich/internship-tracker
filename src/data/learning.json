@@ -2,35 +2,57 @@
   "tracks": [
     {
       "id": "foundation",
-      "name": "Foundation: Python to ML in 12 months"
+      "name": "Foundation: Python to ML in 12 months",
+      "resources": []
     },
     {
       "id": "A",
-      "name": "Track A: valuation and deals"
+      "name": "Track A: valuation and deals",
+      "resources": ["damodaran", "fso", "mi-400", "shl", "book-rosenbaum"]
     },
     {
       "id": "B",
-      "name": "Track B: risk and model validation"
+      "name": "Track B: risk and model validation",
+      "resources": ["tedo-validation", "cbr-845p", "give-me-credit"]
     },
     {
       "id": "C",
-      "name": "Track C: data analytics and data science in banks"
+      "name": "Track C: data analytics and data science in banks",
+      "resources": ["sql-academy", "datalens", "catboost"]
     },
     {
       "id": "D",
-      "name": "Track D: quant and AI research"
+      "name": "Track D: quant and AI research",
+      "resources": ["yandex-math", "book-hull", "dls", "karpathy", "hf-llm"]
     },
     {
       "id": "E",
-      "name": "Track E: ML & Kaggle"
+      "name": "Track E: ML & Kaggle",
+      "resources": [
+        "kaggle-learn",
+        "kaggle-python",
+        "kaggle-pandas",
+        "kaggle-dataviz",
+        "kaggle-intro-ml",
+        "kaggle-inter-ml",
+        "kaggle-feat-eng",
+        "titanic",
+        "playground",
+        "home-credit",
+        "data-fusion",
+        "ods-ml",
+        "kaggle-progression"
+      ]
     },
     {
       "id": "F",
-      "name": "Track F: equity research & buy-side"
+      "name": "Track F: equity research & buy-side",
+      "resources": ["damodaran"]
     },
     {
       "id": "G",
-      "name": "Track G: case championships"
+      "name": "Track G: case championships",
+      "resources": ["cl-cups", "cl-cup-russia", "cl-cup-it", "school-of-finance"]
     }
   ],
   "items": [
@@ -41,12 +63,7 @@
       "start": "2026-10",
       "end": "2026-11",
       "title": "Python basics: types, loops, functions, files",
-      "resources": [
-        {
-          "label": "Поколение Python: курс для начинающих",
-          "url": "https://stepik.org/course/58852/promo"
-        }
-      ],
+      "resources": ["stepik-python", "kaggle-python"],
       "proof": null,
       "project": null
     },
@@ -57,12 +74,7 @@
       "start": "2026-12",
       "end": "2026-12",
       "title": "pandas, charts, Jupyter notebooks",
-      "resources": [
-        {
-          "label": "Kaggle Learn: Pandas, Data Visualization",
-          "url": "https://www.kaggle.com/learn"
-        }
-      ],
+      "resources": ["kaggle-pandas", "kaggle-dataviz"],
       "proof": null,
       "project": null
     },
@@ -73,12 +85,7 @@
       "start": "2027-01",
       "end": "2027-01",
       "title": "Pulling market data with Python",
-      "resources": [
-        {
-          "label": "apimoex, a client for the MOEX ISS API",
-          "url": "https://github.com/WLM1ke/apimoex"
-        }
-      ],
+      "resources": ["apimoex", "apimoex-docs", "moex-iss"],
       "proof": null,
       "project": "P2"
     },
@@ -89,12 +96,7 @@
       "start": "2027-02",
       "end": "2027-02",
       "title": "SQL: SELECT, JOIN, GROUP BY, window functions",
-      "resources": [
-        {
-          "label": "Интерактивный тренажер по SQL",
-          "url": "https://stepik.org/course/63054/promo"
-        }
-      ],
+      "resources": ["stepik-sql", "sql-academy"],
       "proof": null,
       "project": null
     },
@@ -105,16 +107,7 @@
       "start": "2027-03",
       "end": "2027-04",
       "title": "Statistics and probability: distributions, tests, regression",
-      "resources": [
-        {
-          "label": "Основы статистики",
-          "url": "https://stepik.org/course/76/promo"
-        },
-        {
-          "label": "Хендбук по математике",
-          "url": "https://education.yandex.ru/handbook/math"
-        }
-      ],
+      "resources": ["stepik-stats-1", "yandex-math"],
       "proof": "Own implied ERP model for MOEX stocks, in Python",
       "project": "P5"
     },
@@ -125,20 +118,7 @@
       "start": "2027-05",
       "end": "2027-06",
       "title": "Intro ML: regression, trees, gradient boosting, validation",
-      "resources": [
-        {
-          "label": "Kaggle Learn: Intro and Intermediate ML",
-          "url": "https://www.kaggle.com/learn"
-        },
-        {
-          "label": "Учебник по машинному обучению",
-          "url": "https://education.yandex.ru/handbook/ml"
-        },
-        {
-          "label": "Give Me Some Credit",
-          "url": "https://www.kaggle.com/c/GiveMeSomeCredit"
-        }
-      ],
+      "resources": ["kaggle-intro-ml", "kaggle-inter-ml", "yandex-ml", "give-me-credit", "catboost"],
       "proof": null,
       "project": null
     },
@@ -149,12 +129,7 @@
       "start": "2027-07",
       "end": "2027-08",
       "title": "LLM basics applied to finance",
-      "resources": [
-        {
-          "label": "Hugging Face LLM Course",
-          "url": "https://huggingface.co/learn/llm-course/chapter1/1"
-        }
-      ],
+      "resources": ["hf-llm"],
       "proof": null,
       "project": "P8"
     },
@@ -175,13 +150,19 @@
       "when": "Oct 2026",
       "start": "2026-10",
       "end": "2026-10",
-      "title": "Rebuild a DCF from a blank sheet in under 2 hours and defend every assumption. Skim the ФСО I–VI before the ТеДо interview.",
-      "resources": [
-        {
-          "label": "ФСО I–VI",
-          "url": "https://base.garant.ru/404525594/"
-        }
-      ],
+      "title": "Rebuild a DCF from a blank sheet in under 2 hours and defend every assumption",
+      "resources": [],
+      "proof": null,
+      "project": null
+    },
+    {
+      "id": "A8",
+      "track": "A",
+      "when": "Oct 2026",
+      "start": "2026-10",
+      "end": "2026-10",
+      "title": "Skim ФСО I–VI (Russian valuation standards) before the ТеДо valuation interview",
+      "resources": ["fso"],
       "proof": null,
       "project": null
     },
@@ -192,12 +173,7 @@
       "start": "2026-10",
       "end": "2026-12",
       "title": "Work through the valuation lectures and datasets on Damodaran Online",
-      "resources": [
-        {
-          "label": "Damodaran Online",
-          "url": "https://pages.stern.nyu.edu/~adamodar/"
-        }
-      ],
+      "resources": ["damodaran"],
       "proof": null,
       "project": null
     },
@@ -219,12 +195,7 @@
       "start": "2027-01",
       "end": "2027-03",
       "title": "Comparables, precedent transactions and M&A accounting basics",
-      "resources": [
-        {
-          "label": "Book: Rosenbaum & Pearl, Investment Banking",
-          "url": null
-        }
-      ],
+      "resources": ["book-rosenbaum"],
       "proof": null,
       "project": null
     },
@@ -235,12 +206,7 @@
       "start": "2027-04",
       "end": "2027-06",
       "title": "LBO basics; drill technical questions with the 400 Questions guide",
-      "resources": [
-        {
-          "label": "400 Questions guide",
-          "url": "https://mergersandinquisitions.com/400-questions-investment-banking/"
-        }
-      ],
+      "resources": ["mi-400"],
       "proof": null,
       "project": null
     },
@@ -273,12 +239,7 @@
       "start": "2026-10",
       "end": "2026-10",
       "title": "Apply to both ТеДо risk roles. Learn the vocabulary first: PD, LGD, EAD, model lifecycle, model risk",
-      "resources": [
-        {
-          "label": "ТеДо Academy validation course outline",
-          "url": "https://training.tedo.ru/event/modeling-and-validation/"
-        }
-      ],
+      "resources": ["tedo-validation"],
       "proof": null,
       "project": null
     },
@@ -300,12 +261,7 @@
       "start": "2027-05",
       "end": "2027-06",
       "title": "Build a PD model on Give Me Some Credit, then write a two-page validation report on it: Gini, a calibration test, PSI between two time samples",
-      "resources": [
-        {
-          "label": "Give Me Some Credit",
-          "url": "https://www.kaggle.com/c/GiveMeSomeCredit"
-        }
-      ],
+      "resources": ["give-me-credit"],
       "proof": null,
       "project": "P7"
     },
@@ -316,12 +272,7 @@
       "start": "2027-06",
       "end": "2027-08",
       "title": "Read the IFRS 9 impairment basics and the structure of 845-П",
-      "resources": [
-        {
-          "label": "Положение Банка России 845-П",
-          "url": "https://normativ.kontur.ru/document?documentId=487294&moduleId=1"
-        }
-      ],
+      "resources": ["cbr-845p"],
       "proof": null,
       "project": null
     },
@@ -343,12 +294,7 @@
       "start": "2027-03",
       "end": "2027-03",
       "title": "30+ practice problems on SQL Academy, including window functions",
-      "resources": [
-        {
-          "label": "SQL Academy",
-          "url": "https://sql-academy.org/ru/trainer"
-        }
-      ],
+      "resources": ["sql-academy"],
       "proof": null,
       "project": null
     },
@@ -370,12 +316,7 @@
       "start": "2027-04",
       "end": "2027-04",
       "title": "One public dashboard in Yandex DataLens on MOEX data",
-      "resources": [
-        {
-          "label": "Yandex DataLens",
-          "url": "https://datalens.ru/"
-        }
-      ],
+      "resources": ["datalens"],
       "proof": null,
       "project": "P6"
     },
@@ -397,7 +338,7 @@
       "start": "2027-05",
       "end": "2027-06",
       "title": "CatBoost credit-scoring model (the same project as Track B), with feature engineering documented in the notebook",
-      "resources": [],
+      "resources": ["catboost"],
       "proof": null,
       "project": "P7"
     },
@@ -419,12 +360,7 @@
       "start": "2027-09",
       "end": "2027-10",
       "title": "Math refresh with the Хендбук по математике: linear algebra and probability",
-      "resources": [
-        {
-          "label": "Хендбук по математике",
-          "url": "https://education.yandex.ru/handbook/math"
-        }
-      ],
+      "resources": ["yandex-math"],
       "proof": null,
       "project": null
     },
@@ -435,7 +371,7 @@
       "start": "2027-09",
       "end": "2027-11",
       "title": "Hull, Options, Futures and Other Derivatives. Implement Black–Scholes and historical and Monte Carlo VaR in Python on MOEX data",
-      "resources": [],
+      "resources": ["book-hull"],
       "proof": null,
       "project": null
     },
@@ -446,16 +382,7 @@
       "start": "2027-09",
       "end": "2028-05",
       "title": "The free semester course at Deep Learning School (МФТИ), plus Karpathy's Neural Networks: Zero to Hero",
-      "resources": [
-        {
-          "label": "Deep Learning School (МФТИ)",
-          "url": "https://dls.samcs.ru/"
-        },
-        {
-          "label": "Neural Networks: Zero to Hero",
-          "url": "https://karpathy.ai/zero-to-hero.html"
-        }
-      ],
+      "resources": ["dls", "karpathy"],
       "proof": null,
       "project": null
     },
@@ -466,12 +393,7 @@
       "start": "2028-03",
       "end": "2028-05",
       "title": "Fine-tuning chapters of the Hugging Face LLM Course; a LoRA fine-tune of a small model on Russian financial news",
-      "resources": [
-        {
-          "label": "Hugging Face LLM Course",
-          "url": "https://huggingface.co/learn/llm-course/chapter1/1"
-        }
-      ],
+      "resources": ["hf-llm"],
       "proof": null,
       "project": null
     },
@@ -493,7 +415,7 @@
       "start": "2026-10",
       "end": "2026-10",
       "title": "Create Kaggle + GitHub accounts; Kaggle Python course",
-      "resources": [],
+      "resources": ["kaggle-python"],
       "proof": null,
       "project": "P1"
     },
@@ -504,12 +426,7 @@
       "start": "2026-10",
       "end": "2026-12",
       "title": "Kaggle Learn Python, Pandas, Data Visualization",
-      "resources": [
-        {
-          "label": "Kaggle Learn",
-          "url": "https://www.kaggle.com/learn"
-        }
-      ],
+      "resources": ["kaggle-python", "kaggle-pandas", "kaggle-dataviz"],
       "proof": null,
       "project": "P1"
     },
@@ -520,7 +437,7 @@
       "start": "2027-01",
       "end": "2027-01",
       "title": "Titanic submission, then the current Playground Series episode",
-      "resources": [],
+      "resources": ["titanic", "playground"],
       "proof": null,
       "project": "P3"
     },
@@ -531,7 +448,7 @@
       "start": "2027-02",
       "end": "2027-03",
       "title": "Enter the Data Fusion Contest (VTB + T1, banking data, on ods.ai)",
-      "resources": [],
+      "resources": ["data-fusion"],
       "proof": null,
       "project": null
     },
@@ -542,16 +459,7 @@
       "start": "2027-04",
       "end": "2027-06",
       "title": "Kaggle Learn Intro/Intermediate ML + Feature Engineering; Give Me Some Credit and Home Credit Default Risk as late submissions",
-      "resources": [
-        {
-          "label": "Kaggle Learn",
-          "url": "https://www.kaggle.com/learn"
-        },
-        {
-          "label": "Give Me Some Credit",
-          "url": "https://www.kaggle.com/c/GiveMeSomeCredit"
-        }
-      ],
+      "resources": ["kaggle-intro-ml", "kaggle-inter-ml", "kaggle-feat-eng", "give-me-credit", "home-credit"],
       "proof": null,
       "project": "P7"
     },
@@ -573,7 +481,7 @@
       "start": "2027-07",
       "end": null,
       "title": "A live competition in a team; ODS open ML course alongside",
-      "resources": [],
+      "resources": ["ods-ml"],
       "proof": null,
       "project": null
     },
@@ -584,7 +492,7 @@
       "start": "2028-01",
       "end": "2028-12",
       "title": "Kaggle Competitions Expert",
-      "resources": [],
+      "resources": ["kaggle-progression"],
       "proof": null,
       "project": null
     },
@@ -661,7 +569,7 @@
       "start": "2026-10",
       "end": "2026-10",
       "title": "Register for one autumn Changellenge cup",
-      "resources": [],
+      "resources": ["cl-cups"],
       "proof": null,
       "project": null
     },
@@ -683,7 +591,7 @@
       "start": "2027-02",
       "end": "2027-02",
       "title": "Form a team for Cup Russia + Cup IT (spring season)",
-      "resources": [],
+      "resources": ["cl-cup-russia", "cl-cup-it"],
       "proof": null,
       "project": null
     },
@@ -705,7 +613,7 @@
       "start": null,
       "end": null,
       "title": "Enter again with a model you built yourself",
-      "resources": [],
+      "resources": ["school-of-finance"],
       "proof": null,
       "project": null
     }
