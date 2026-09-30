@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { BackupReminder } from './components/BackupReminder'
+import { BottomTabs } from './components/BottomTabs'
 import { DiskIndicator } from './components/DiskIndicator'
 import { SearchPalette } from './components/SearchPalette'
 import Backup from './pages/Backup'
@@ -97,8 +98,8 @@ function Layout() {
       <header className="sticky top-0 z-10 border-b border-slate-200 bg-slate-50/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2">
           <span className="shrink-0 font-semibold">IB Tracker</span>
-          {/* On phones the menu scrolls sideways instead of wrapping */}
-          <nav className="flex flex-1 gap-1 overflow-x-auto">
+          {/* Phones use the bottom tab bar instead (BottomTabs); this menu shows from tablet width up */}
+          <nav className="hidden flex-1 gap-1 overflow-x-auto md:flex">
             {PAGES.map((p) => (
               <NavLink
                 key={p.path}
@@ -116,6 +117,7 @@ function Layout() {
               </NavLink>
             ))}
           </nav>
+          <div className="flex-1 md:hidden" />
           <button
             onClick={() => setSearching(true)}
             className="shrink-0 rounded-md px-2 py-1 text-sm text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-800"
@@ -139,7 +141,7 @@ function Layout() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-6">
+      <main className="mx-auto max-w-6xl px-4 pt-6 pb-6">
         {warning && (
           <p
             role="alert"
@@ -173,10 +175,12 @@ function Layout() {
           <Route path="/print" element={<Print />} />
         </Routes>
       </main>
-      <footer className="mx-auto max-w-6xl px-4 pb-6">
+      {/* Extra space at the bottom on phones so the tab bar never covers content */}
+      <footer className="mx-auto max-w-6xl px-4 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-6">
         <DiskIndicator />
       </footer>
       {searching && <SearchPalette onClose={() => setSearching(false)} />}
+      <BottomTabs />
     </div>
   )
 }
