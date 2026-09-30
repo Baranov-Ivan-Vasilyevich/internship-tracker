@@ -206,6 +206,8 @@ export const SavedDataSchema = z.object({
   customEvents: z.array(EventSchema).default([]),
   timeLog: z.array(TimeEntrySchema).default([]),
   weeklyTargetHours: z.number().positive().max(80).default(6), // the plan: about 6 h a week
+  lastBackupAt: z.string().default(''), // date of your last Download backup
+  backupSnoozedUntil: z.string().default(''), // set by Remind me in a week
 })
 
 // Turn zod's error into short lines like

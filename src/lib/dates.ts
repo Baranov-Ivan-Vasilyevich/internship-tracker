@@ -42,6 +42,11 @@ export function formatMonth(month: string) {
   return `${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`
 }
 
+// Whole days from one date to another ("2026-10-01" to "2026-10-31" = 30)
+export function daysBetween(from: string, to: string) {
+  return Math.round((parseDate(to).getTime() - parseDate(from).getTime()) / 86_400_000)
+}
+
 export function daysUntil(iso: string) {
   return Math.round((parseDate(iso).getTime() - parseDate(todayISO()).getTime()) / 86_400_000)
 }

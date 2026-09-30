@@ -1,5 +1,6 @@
 // Everything pages need to read and change your data.
-import { todayISO } from '../lib/dates'
+import { addDays, todayISO } from '../lib/dates'
+import { download } from '../lib/files'
 import type { TimeEntry } from '../lib/timeLog'
 import { EventStateSchema, InternshipStateSchema, ProjectStateSchema } from '../schemas'
 import { EVENTS, INTERNSHIPS } from '../seed'
@@ -116,4 +117,20 @@ export function useProjects() {
         projects: { ...d.projects, [id]: { ...(d.projects[id] ?? ProjectStateSchema.parse({})), ...changes } },
       })),
   }
+}
+
+// Download everything as a JSON backup, and remember the date (for the monthly reminder)
+export function useDownloadBackup() {
+  const { data, setData } = useData()
+  return () => {
+    const today = todayISO()
+    const withDate = { ...data, lastBackupAt: today, backupSnoozedUntil: '' }
+    download(`internship-tracker-backup-${today}.json`, JSON.stringify(withDate, null, 2), 'application/json')
+    setData(() => withDate)
+  }
+}
+
+export function useSnoozeBackupReminder() {
+  const { setData } = useData()
+  return (days: number) => setData((d) => ({ ...d, backupSnoozedUntil: addDays(todayISO(), days) }))
 }

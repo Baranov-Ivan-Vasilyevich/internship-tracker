@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { BackupReminder } from './components/BackupReminder'
 import { DiskIndicator } from './components/DiskIndicator'
 import { SearchPalette } from './components/SearchPalette'
 import Backup from './pages/Backup'
@@ -146,6 +147,7 @@ function Layout() {
             {warning}
           </p>
         )}
+        <BackupReminder />
         {notice && (
           <p
             role="status"

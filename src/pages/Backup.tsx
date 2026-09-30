@@ -5,17 +5,18 @@ import { collectDates } from '../lib/deadlines'
 import { download } from '../lib/files'
 import { buildIcs } from '../lib/ics'
 import { useData } from '../state/context'
-import { useEvents } from '../state/hooks'
+import { useDownloadBackup, useEvents } from '../state/hooks'
 import { emptyData, migrate } from '../state/migrate'
 import { seedIds } from '../state/storage'
 
 export default function Backup() {
-  const { data, setData } = useData()
+  const { setData } = useData()
   const { rows: events } = useEvents()
   const [message, setMessage] = useState('')
 
+  const downloadBackup = useDownloadBackup()
   const exportJson = () => {
-    download(`internship-tracker-backup-${todayISO()}.json`, JSON.stringify(data, null, 2), 'application/json')
+    downloadBackup()
     setMessage('Backup downloaded.')
   }
 
