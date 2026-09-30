@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ResourceLink } from '../components/ResourceLink'
 import { TimeLogForm } from '../components/TimeLogForm'
 import { Card, ProgressBar, inputClass, secondaryButtonClass } from '../components/ui'
@@ -20,15 +20,35 @@ export default function Learning() {
   const done = new Set(data.learningDone)
   const month = currentMonth()
 
-  // Which track sections are expanded. Foundation starts open.
+  // Search links here with ?item=FND3: open that item's track and scroll to it
+  const [params, setParams] = useSearchParams()
+  const focusId = params.get('item')
+  const focusTrack = LEARNING.find((i) => i.id === focusId)?.track
+
+  // Which track sections are expanded. Foundation starts open; the searched item's track is always open.
   const [open, setOpen] = useState<Set<string>>(() => new Set(['foundation']))
-  const flip = (id: string) =>
+  const isTrackOpen = (id: string) => open.has(id) || id === focusTrack
+  useEffect(() => {
+    if (!focusId) return
+    // wait one frame so the track is open before scrolling
+    requestAnimationFrame(() =>
+      document.getElementById(`row-${focusId}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
+    )
+  }, [focusId, focusTrack])
+  const flip = (id: string) => {
+    // Collapsing the searched item's track: forget the search so it can close
+    if (id === focusTrack) {
+      setParams({})
+      setOpen((prev) => new Set([...prev].filter((x) => x !== id)))
+      return
+    }
     setOpen((prev) => {
       const next = new Set(prev)
       if (next.has(id)) next.delete(id)
       else next.add(id)
       return next
     })
+  }
 
   const doneCount = LEARNING.filter((i) => done.has(i.id)).length
 
@@ -47,7 +67,13 @@ export default function Learning() {
         <button className={secondaryButtonClass} onClick={() => setOpen(new Set(TRACKS.map((t) => t.id)))}>
           Expand all
         </button>
-        <button className={secondaryButtonClass} onClick={() => setOpen(new Set())}>
+        <button
+          className={secondaryButtonClass}
+          onClick={() => {
+            setOpen(new Set())
+            if (focusId) setParams({})
+          }}
+        >
           Collapse all
         </button>
       </div>
@@ -57,7 +83,7 @@ export default function Learning() {
         const trackDone = items.filter((i) => done.has(i.id)).length
         const trackHours = Math.round(items.reduce((sum, i) => sum + (perItem.get(i.id) ?? 0), 0) * 100) / 100
         const events = allEvents.filter((e) => e.track === track.id)
-        const isOpen = open.has(track.id)
+        const isOpen = isTrackOpen(track.id)
         return (
           <Card key={track.id} className="space-y-2">
             <button
@@ -95,6 +121,7 @@ export default function Learning() {
                     onToggle={() => toggle('learningDone', item.id)}
                     hours={perItem.get(item.id) ?? 0}
                     onLog={timeLog.add}
+                    highlight={item.id === focusId}
                   />
                 ))}
               </ul>
@@ -135,13 +162,17 @@ type RowProps = {
   onToggle: () => void
   hours: number
   onLog: (entry: TimeEntry) => void
+  highlight?: boolean
 }
 
-function LearningRow({ item, done, active, onToggle, hours, onLog }: RowProps) {
+function LearningRow({ item, done, active, onToggle, hours, onLog, highlight }: RowProps) {
   const project = item.project ? projectById(item.project) : undefined
   const [logging, setLogging] = useState(false)
   return (
-    <li className="flex gap-3 py-3">
+    <li
+      id={`row-${item.id}`}
+      className={`flex gap-3 py-3 ${highlight ? '-mx-2 rounded-md bg-amber-50 px-2 dark:bg-amber-950/30' : ''}`}
+    >
       <input
         id={`learn-${item.id}`}
         type="checkbox"

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { SearchPalette } from './components/SearchPalette'
 import Backup from './pages/Backup'
 import Dashboard from './pages/Dashboard'
 import Events from './pages/Events'
@@ -69,6 +70,19 @@ export default function App() {
 
 function Layout() {
   const { warning } = useData()
+  const [searching, setSearching] = useState(false)
+
+  // Cmd+K (Mac) or Ctrl+K (Windows) opens search from anywhere
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setSearching((open) => !open)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
   // On a phone the menu scrolls sideways: keep the current page's tab visible
   const { pathname } = useLocation()
   useEffect(() => {
@@ -99,6 +113,25 @@ function Layout() {
               </NavLink>
             ))}
           </nav>
+          <button
+            onClick={() => setSearching(true)}
+            className="shrink-0 rounded-md px-2 py-1 text-sm text-slate-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:bg-slate-800"
+            aria-label="Search (Cmd+K)"
+            title="Search (⌘K / Ctrl+K)"
+          >
+            <svg
+              viewBox="0 0 20 20"
+              className="inline h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden
+            >
+              <circle cx="8.5" cy="8.5" r="5.5" />
+              <path d="m13 13 4.5 4.5" strokeLinecap="round" />
+            </svg>
+            <span className="ml-1 hidden text-xs text-slate-400 lg:inline">⌘K</span>
+          </button>
           <ThemeToggle />
         </div>
       </header>
@@ -124,6 +157,7 @@ function Layout() {
           <Route path="/backup" element={<Backup />} />
         </Routes>
       </main>
+      {searching && <SearchPalette onClose={() => setSearching(false)} />}
     </div>
   )
 }
