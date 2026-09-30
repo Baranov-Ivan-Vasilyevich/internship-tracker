@@ -13,20 +13,25 @@ export const seedIds = () => ({
   events: new Set(EVENTS.map((e) => e.id)),
 })
 
-export type LoadResult = { data: SavedData; warning: string | null }
+// fromBrowser = the browser had saved data (used to decide whether to restore from disk)
+export type LoadResult = { data: SavedData; warning: string | null; fromBrowser: boolean }
 
 export function loadSaved(): LoadResult {
   let raw: string | null
   try {
     raw = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_KEY)
   } catch {
-    return { data: emptyData(), warning: 'This browser blocks storage, so nothing you change will be remembered.' }
+    return {
+      data: emptyData(),
+      warning: 'This browser blocks storage, so nothing you change will be remembered.',
+      fromBrowser: false,
+    }
   }
-  if (!raw) return { data: emptyData(), warning: null }
+  if (!raw) return { data: emptyData(), warning: null, fromBrowser: false }
   try {
     const data = migrate(JSON.parse(raw), seedIds())
     saveData(data) // store the upgraded version right away (the old key is left as it was)
-    return { data, warning: null }
+    return { data, warning: null, fromBrowser: true }
   } catch (err) {
     // Never throw data away: park the unreadable copy under its own key before starting fresh
     const parked = `${STORAGE_KEY}-unreadable-${Date.now()}`
@@ -36,6 +41,7 @@ export function loadSaved(): LoadResult {
       /* ignore */
     }
     return {
+      fromBrowser: false, // nothing usable in the browser, so a copy on disk may be restored
       data: emptyData(),
       warning: `Your saved data could not be read (${(err as Error).message}). A copy was kept under "${parked}". Import a backup to restore.`,
     }

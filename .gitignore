@@ -25,3 +25,6 @@ dist-ssr
 
 # Link checker output
 reports
+
+# Your tracker data saved by the dev server: private, never commit
+data/

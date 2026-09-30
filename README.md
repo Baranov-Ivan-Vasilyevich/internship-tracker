@@ -30,6 +30,19 @@ Open http://localhost:5173.
 - If a JSON file has a mistake, the app shows a list of errors (file, row id, what's wrong) instead of the pages.
 - Backups: **Backup → Download backup**. Do this regularly and to move data between devices.
 
+## Automatic save to disk (npm run dev only)
+
+While `npm run dev` is running, the app also saves your data to `data/user-data.json`
+(about a second after each change) and keeps the last 7 daily copies in `data/backups/`.
+The footer shows **Saved to disk ✓** when this works.
+
+- If the browser's storage is empty (for example Safari cleared site data) but the file exists,
+  the app restores your data from the file and tells you so.
+- If the file is damaged, the app does not overwrite it and pauses saving. Restore a daily copy
+  from `data/backups/` (rename it to `user-data.json`), or import a backup.
+- `data/` is in `.gitignore`: it is never committed or published.
+- The GitHub Pages version has no dev server, so it always shows **Not saved to disk**.
+
 ## Editing the plan (src/data)
 
 Every file is checked when the app loads. Dates are `"YYYY-MM-DD"`, months are `"YYYY-MM"`.

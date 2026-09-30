@@ -1,9 +1,10 @@
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
+import { diskSave } from './vite-plugins/diskSave.ts'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), diskSave()],
   // Relative paths so the built site works from any folder (needed for GitHub Pages)
   base: './',
   // Always use port 5173. Saved data belongs to the exact address (localhost:5173),

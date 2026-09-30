@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { DiskIndicator } from './components/DiskIndicator'
 import { SearchPalette } from './components/SearchPalette'
 import Backup from './pages/Backup'
 import Dashboard from './pages/Dashboard'
@@ -69,7 +70,7 @@ export default function App() {
 }
 
 function Layout() {
-  const { warning } = useData()
+  const { warning, notice, dismissNotice } = useData()
   const [searching, setSearching] = useState(false)
 
   // Cmd+K (Mac) or Ctrl+K (Windows) opens search from anywhere
@@ -145,6 +146,17 @@ function Layout() {
             {warning}
           </p>
         )}
+        {notice && (
+          <p
+            role="status"
+            className="mb-4 flex items-start gap-3 rounded-md bg-emerald-100 px-3 py-2 text-sm text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-200"
+          >
+            <span className="flex-1">{notice}</span>
+            <button onClick={dismissNotice} aria-label="Dismiss" className="text-emerald-700 dark:text-emerald-300">
+              ✕
+            </button>
+          </p>
+        )}
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/internships" element={<Internships />} />
@@ -157,6 +169,9 @@ function Layout() {
           <Route path="/backup" element={<Backup />} />
         </Routes>
       </main>
+      <footer className="mx-auto max-w-6xl px-4 pb-6">
+        <DiskIndicator />
+      </footer>
       {searching && <SearchPalette onClose={() => setSearching(false)} />}
     </div>
   )
