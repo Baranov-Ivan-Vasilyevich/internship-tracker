@@ -29,7 +29,11 @@
         "url": "https://www.fa.ru/university/structure/education/dir-career/utrk/careerweek/tedo/",
         "verified": null
       }
-    ]
+    ],
+    "plannedAction": {
+      "text": "Apply before 20 Oct",
+      "due": "2026-10-19"
+    }
   },
   {
     "id": "tedo-validation",
@@ -61,7 +65,11 @@
         "url": "https://www.fa.ru/university/structure/education/dir-career/utrk/careerweek/tedo/",
         "verified": null
       }
-    ]
+    ],
+    "plannedAction": {
+      "text": "Apply before 20 Oct",
+      "due": "2026-10-19"
+    }
   },
   {
     "id": "tedo-fin-risk",

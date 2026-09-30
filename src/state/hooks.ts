@@ -9,7 +9,15 @@ const defaultInternshipState = (): InternshipState => InternshipStateSchema.pars
 const defaultEventState = (): EventState => EventStateSchema.parse({})
 
 // An internship from the plan (or one you added), together with your data for it
-export type InternshipRow = Internship & { custom: boolean; state: InternshipState }
+// nextAction = your own next action, or else the plan's suggestion (planned: true) until you mark it done
+export type NextAction = { text: string; due: string; planned: boolean }
+export type InternshipRow = Internship & { custom: boolean; state: InternshipState; nextAction: NextAction }
+
+function effectiveNextAction(i: Internship, s: InternshipState): NextAction {
+  if (s.nextAction.text) return { ...s.nextAction, planned: false }
+  if (i.plannedAction && !s.plannedActionDone) return { ...i.plannedAction, planned: true }
+  return { text: '', due: '', planned: false }
+}
 export type EventRow = EventEntry & { custom: boolean; state: EventState }
 
 export function useInternships() {
@@ -17,7 +25,10 @@ export function useInternships() {
   const rows: InternshipRow[] = [
     ...INTERNSHIPS.map((i) => ({ ...i, custom: false })),
     ...data.customInternships.map((i) => ({ ...i, custom: true })),
-  ].map((i) => ({ ...i, state: data.internships[i.id] ?? defaultInternshipState() }))
+  ].map((i) => {
+    const state = data.internships[i.id] ?? defaultInternshipState()
+    return { ...i, state, nextAction: effectiveNextAction(i, state) }
+  })
 
   const update = (id: string, changes: Partial<InternshipState>) =>
     setData((d) => {

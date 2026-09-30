@@ -68,6 +68,14 @@
       "month": "2027-08",
       "tracks": ["A", "E"],
       "output": "GitHub repo + demo"
+    },
+    {
+      "id": "P9",
+      "title": "INGOSIGHT 2026: startup financial model",
+      "when": "Oct 2026",
+      "month": "2026-10",
+      "tracks": ["A", "G"],
+      "output": "Financial model: unit economics, revenue forecast, payback"
     }
   ]
 }

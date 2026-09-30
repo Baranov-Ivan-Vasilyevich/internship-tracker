@@ -52,7 +52,7 @@
     {
       "id": "G",
       "name": "Track G: case championships",
-      "resources": ["cl-cups", "cl-cup-russia", "cl-cup-it", "school-of-finance"]
+      "resources": ["cl-cups", "cl-cup-russia", "cl-cup-it", "school-of-finance", "cl-ingosight-2026"]
     }
   ],
   "items": [
@@ -616,6 +616,17 @@
       "resources": ["school-of-finance"],
       "proof": null,
       "project": null
+    },
+    {
+      "id": "G6",
+      "track": "G",
+      "when": "Sep–Nov 2026",
+      "start": "2026-09",
+      "end": "2026-11",
+      "title": "INGOSIGHT 2026: team of 2–4 (4 is optimal); I am the financier: unit economics, revenue forecast, payback",
+      "resources": ["cl-ingosight-2026"],
+      "proof": null,
+      "project": "P9"
     }
   ]
 }

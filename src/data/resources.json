@@ -310,8 +310,8 @@
     "title": "Kaggle: Titanic",
     "url": "https://www.kaggle.com/competitions/titanic",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "EN",
+    "cost": "free",
     "verified": null
   },
   {
@@ -319,8 +319,8 @@
     "title": "Kaggle Playground Series",
     "url": "https://www.kaggle.com/competitions?hostSegmentIdFilter=8",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "EN",
+    "cost": "free",
     "verified": null
   },
   {
@@ -328,8 +328,8 @@
     "title": "Kaggle: Give Me Some Credit",
     "url": "https://www.kaggle.com/c/GiveMeSomeCredit",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "EN",
+    "cost": "free",
     "verified": null
   },
   {
@@ -337,8 +337,8 @@
     "title": "Kaggle: Home Credit Default Risk",
     "url": "https://www.kaggle.com/c/home-credit-default-risk",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "EN",
+    "cost": "free",
     "verified": null
   },
   {
@@ -346,8 +346,8 @@
     "title": "Kaggle progression system",
     "url": "https://www.kaggle.com/progression",
     "type": "guide",
-    "lang": null,
-    "cost": null,
+    "lang": "EN",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -355,8 +355,8 @@
     "title": "Data Fusion Contest (VTB + T1, ODS)",
     "url": "https://ods.ai/tracks/data-fusion-2026-competitions",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -364,8 +364,8 @@
     "title": "Yandex Cup",
     "url": "https://yandex.ru/cup/",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU/EN",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -373,8 +373,8 @@
     "title": "Yandex Cup 2026 final, Moscow",
     "url": "https://ict2go.ru/events/72403/",
     "type": "event",
-    "lang": null,
-    "cost": null,
+    "lang": "RU/EN",
+    "cost": "free",
     "verified": null
   },
   {
@@ -382,8 +382,8 @@
     "title": "AI Journey Contest 2026",
     "url": "https://ict2go.ru/events/71679/",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU/EN",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -391,8 +391,8 @@
     "title": "Changellenge championships",
     "url": "https://changellenge.com/tpage/cups/",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -400,8 +400,8 @@
     "title": "Changellenge Cup Russia 2026",
     "url": "https://changellenge.com/championships/changellenge-cup-russia-2026/",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -409,8 +409,8 @@
     "title": "Changellenge Cup IT 2026",
     "url": "https://changellenge.com/championships/changellenge-cup-it-2026/",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU",
+    "cost": "free",
     "verified": "2026-09-29"
   },
   {
@@ -418,8 +418,8 @@
     "title": "School of Finance case competition",
     "url": "https://sfinance.org/case_competition",
     "type": "competition",
-    "lang": null,
-    "cost": null,
+    "lang": "RU",
+    "cost": "free",
     "verified": null
   },
   {
@@ -439,5 +439,14 @@
     "lang": null,
     "cost": null,
     "verified": null
+  },
+  {
+    "id": "cl-ingosight-2026",
+    "title": "INGOSIGHT 2026 (Ingosstrakh startup case championship)",
+    "url": "https://changellenge.com/championships/ingosight-2026/",
+    "type": "competition",
+    "lang": "RU",
+    "cost": "free",
+    "verified": "2026-09-30"
   }
 ]

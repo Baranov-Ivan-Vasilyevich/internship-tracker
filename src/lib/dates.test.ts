@@ -24,7 +24,7 @@ describe('date helpers', () => {
 describe('deadlines', () => {
   it('lists the next deadlines from windows and events, soonest first', () => {
     const next = upcomingDeadlines(collectDates(EVENTS), '2026-09-29').slice(0, 4)
-    expect(next.map((d) => d.end)).toEqual(['2026-10-31', '2026-10-31', '2026-11-01', '2026-11-02'])
+    expect(next.map((d) => d.end)).toEqual(['2026-10-18', '2026-10-26', '2026-10-31', '2026-10-31'])
   })
 
   it('drops deadlines that have passed', () => {

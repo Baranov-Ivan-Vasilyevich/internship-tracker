@@ -1,5 +1,51 @@
 [
   {
+    "id": "ingosight-2026",
+    "name": "INGOSIGHT 2026",
+    "kind": "case",
+    "track": "G",
+    "info": "Ingosstrakh startup case championship on wellbeing: health, finance, real estate, travel. Team of 2–4 (4 is optimal). My role: financier (unit economics, revenue forecast, payback).",
+    "resources": ["cl-ingosight-2026"],
+    "dates": [
+      {
+        "id": "ingosight-reg",
+        "label": "INGOSIGHT registration",
+        "start": "2026-09-22",
+        "end": "2026-10-18",
+        "certainty": "official",
+        "deadline": true,
+        "note": ""
+      },
+      {
+        "id": "ingosight-round1",
+        "label": "INGOSIGHT round 1 solution",
+        "start": "2026-10-20",
+        "end": "2026-10-26",
+        "certainty": "official",
+        "deadline": true,
+        "note": ""
+      },
+      {
+        "id": "ingosight-pitch",
+        "label": "INGOSIGHT pitch days",
+        "start": "2026-11-05",
+        "end": "2026-11-06",
+        "certainty": "official",
+        "deadline": false,
+        "note": ""
+      },
+      {
+        "id": "ingosight-final",
+        "label": "INGOSIGHT final, Moscow",
+        "start": "2026-11-25",
+        "end": "2026-11-26",
+        "certainty": "official",
+        "deadline": false,
+        "note": ""
+      }
+    ]
+  },
+  {
     "id": "profinance-forum",
     "name": "ProFinance career forum",
     "kind": "event",

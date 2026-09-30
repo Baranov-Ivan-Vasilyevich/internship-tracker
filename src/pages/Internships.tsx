@@ -38,7 +38,7 @@ function compare(a: InternshipRow, b: InternshipRow, key: SortKey): number {
     case 'status':
       return STATUSES.indexOf(a.state.status) - STATUSES.indexOf(b.state.status)
     case 'nextAction':
-      return (a.state.nextAction.due || '9999').localeCompare(b.state.nextAction.due || '9999')
+      return (a.nextAction.due || '9999').localeCompare(b.nextAction.due || '9999')
     default:
       return 0 // "order" keeps the doc order (soonest to latest)
   }
@@ -313,11 +313,14 @@ function Eligibility({ i, month }: { i: InternshipRow; month: string }) {
 }
 
 function NextAction({ i }: { i: InternshipRow }) {
-  const { text, due } = i.state.nextAction
+  const { text, due, planned } = i.nextAction
   if (!text) return <span className="text-xs text-slate-400">—</span>
   return (
     <span className="text-xs">
       {text}
+      {planned && (
+        <span className="ml-1 rounded bg-sky-100 px-1 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300">plan</span>
+      )}
       {due && <span className="block text-slate-500">due {formatDate(due)}</span>}
     </span>
   )

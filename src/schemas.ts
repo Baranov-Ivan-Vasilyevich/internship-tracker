@@ -62,6 +62,8 @@ export const InternshipSchema = z.object({
   stages: z.array(z.string()),
   stagesNote: z.string().optional(),
   sources: z.array(SourceSchema),
+  // A next action suggested by the plan. Shown until you set your own or mark it done.
+  plannedAction: z.object({ text: z.string(), due: day }).optional(),
 })
 
 export const TrackSchema = z.object({ id: z.string(), name: z.string(), resources: z.array(z.string()) })
@@ -132,6 +134,7 @@ export const InternshipStateSchema = z.object({
   stagesDone: z.array(z.string()).default([]),
   log: z.array(LogEntrySchema).default([]),
   nextAction: z.object({ text: z.string(), due: z.string() }).default({ text: '', due: '' }),
+  plannedActionDone: z.boolean().default(false),
 })
 
 export const RoundSchema = z.object({

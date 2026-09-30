@@ -130,10 +130,23 @@ export default function InternshipDetail({ row, onClose }: { row: InternshipRow;
         </Section>
 
         <Section title="Next action">
+          {row.nextAction.planned && (
+            <div className="flex flex-wrap items-center gap-2 rounded-md bg-sky-50 px-3 py-2 text-sm dark:bg-sky-950/40">
+              <span className="flex-1">
+                From your plan: <b>{row.nextAction.text}</b>
+                {row.nextAction.due && ` · due ${formatDate(row.nextAction.due)}`}
+              </span>
+              <button onClick={() => set({ plannedActionDone: true })} className={secondaryButtonClass}>
+                Done
+              </button>
+            </div>
+          )}
           <div className="flex flex-wrap gap-2">
             <input
               aria-label="Next action"
-              placeholder="e.g. Finish the cover letter"
+              placeholder={
+                row.nextAction.planned ? "Your own next action (replaces the plan's)" : 'e.g. Finish the cover letter'
+              }
               value={s.nextAction.text}
               onChange={(e) => set({ nextAction: { ...s.nextAction, text: e.target.value } })}
               className={`${inputClass} flex-1`}
