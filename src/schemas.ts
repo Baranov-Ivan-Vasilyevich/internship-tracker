@@ -135,6 +135,8 @@ export const InternshipStateSchema = z.object({
   log: z.array(LogEntrySchema).default([]),
   nextAction: z.object({ text: z.string(), due: z.string() }).default({ text: '', due: '' }),
   plannedActionDone: z.boolean().default(false),
+  // Links you checked yourself with "Mark verified": url → date
+  verifiedSources: z.record(z.string(), z.string()).default({}),
 })
 
 export const RoundSchema = z.object({

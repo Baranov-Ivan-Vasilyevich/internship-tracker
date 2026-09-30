@@ -8,7 +8,13 @@
 //   check manually  anything else: blocked, timeout, SSL error, 401/403/429/5xx…
 // Some sites block scripts or fail SSL checks from other networks, so they are never
 // reported as "broken", only "check manually" (see MANUAL_HOSTS).
+//
+// npm run check-links -- --mark-verified
+// Also sets "verified" to today for every link that loaded, in resources.json and in the
+// internship sources. hh.ru vacancy pages are never marked: a page that loads doesn't mean
+// the vacancy is still open. Confirm those yourself with "Mark verified" in the app.
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
+import { format } from 'prettier'
 
 const DATA_DIR = new URL('../src/data/', import.meta.url)
 const REPORT_DIR = new URL('../reports/', import.meta.url)
@@ -97,3 +103,35 @@ await writeFile(new URL('link-report.md', REPORT_DIR), md)
 await writeFile(new URL('link-report.json', REPORT_DIR), JSON.stringify({ checkedAt: when, results }, null, 2))
 console.log(`ok: ${count('ok')} · check manually: ${count('check manually')} · broken: ${count('broken')}`)
 console.log('Report: reports/link-report.md')
+
+// ---------- optional: --mark-verified ----------
+if (process.argv.includes('--mark-verified')) {
+  const d = new Date()
+  const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  const isVacancy = (url) =>
+    /(^|\.)hh\.ru$/.test(new URL(url).hostname) && new URL(url).pathname.startsWith('/vacancy/')
+  const okUrls = new Set(results.filter((r) => r.result === 'ok' && !isVacancy(r.url)).map((r) => r.url))
+  const marked = []
+
+  // Rows in these files have { url, verified } (resources, internship sources)
+  const mark = (value) => {
+    if (Array.isArray(value)) value.forEach(mark)
+    else if (value && typeof value === 'object') {
+      if (typeof value.url === 'string' && 'verified' in value && okUrls.has(value.url) && value.verified !== today) {
+        value.verified = today
+        marked.push(value.url)
+      }
+      Object.values(value).forEach(mark)
+    }
+  }
+  for (const file of ['resources.json', 'internships.json']) {
+    const path = new URL(file, DATA_DIR)
+    const data = JSON.parse(await readFile(path, 'utf8'))
+    mark(data)
+    await writeFile(path, await format(JSON.stringify(data, null, 2), { parser: 'json', printWidth: 120 }))
+  }
+  const skipped = results.filter((r) => r.result === 'ok' && isVacancy(r.url)).length
+  console.log(
+    `Marked ${new Set(marked).size} links (${marked.length} entries) as verified ${today}. Skipped ${skipped} hh.ru vacancy links (check those by hand).`,
+  )
+}

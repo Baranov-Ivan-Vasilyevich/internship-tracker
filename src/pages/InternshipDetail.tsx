@@ -244,7 +244,14 @@ export default function InternshipDetail({ row, onClose }: { row: InternshipRow;
         </Section>
 
         <Section title="Sources">
-          <SourcesBlock sources={row.sources} />
+          <p className="text-xs text-slate-500">
+            Open a link, check it (for a vacancy: is it still open?), then press “Mark verified”.
+          </p>
+          <SourcesBlock
+            sources={row.sources}
+            myVerified={s.verifiedSources}
+            onMark={(url) => set({ verifiedSources: { ...s.verifiedSources, [url]: todayISO() } })}
+          />
         </Section>
 
         {row.custom && (
