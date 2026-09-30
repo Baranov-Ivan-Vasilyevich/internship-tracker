@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { Card, buttonClass, secondaryButtonClass } from '../components/ui'
 import { todayISO } from '../lib/dates'
 import { collectDates } from '../lib/deadlines'
@@ -66,6 +67,17 @@ export default function Backup() {
             <input type="file" accept="application/json,.json" onChange={importJson} className="hidden" />
           </label>
         </div>
+      </Card>
+
+      <Card className="space-y-3">
+        <h2 className="font-medium">Printable plan</h2>
+        <p className="text-sm text-slate-500">
+          One clean page with upcoming dates, internships, learning checklists and CV projects. Print it or save it as a
+          PDF (in the print dialog, choose “Save as PDF”).
+        </p>
+        <Link to="/print" className={`${buttonClass} inline-block`}>
+          Open printable plan
+        </Link>
       </Card>
 
       <Card className="space-y-3">

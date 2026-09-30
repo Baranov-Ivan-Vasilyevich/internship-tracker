@@ -20,3 +20,31 @@ body {
   outline: 2px solid var(--color-blue-500);
   outline-offset: 2px;
 }
+
+/* Printing (the Print plan page, or Cmd+P anywhere): no menus or buttons, black text on white */
+@media print {
+  header,
+  footer,
+  nav,
+  .no-print,
+  [role='status'] {
+    display: none !important;
+  }
+  :root,
+  :root.dark {
+    color-scheme: light;
+  }
+  body,
+  body * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  a::after {
+    content: none;
+  }
+}

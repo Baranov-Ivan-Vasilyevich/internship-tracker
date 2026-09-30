@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard'
 import Events from './pages/Events'
 import Internships from './pages/Internships'
 import Learning from './pages/Learning'
+import Print from './pages/Print'
 import Projects from './pages/Projects'
 import Resources from './pages/Resources'
 import Timeline from './pages/Timeline'
@@ -169,6 +170,7 @@ function Layout() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/backup" element={<Backup />} />
+          <Route path="/print" element={<Print />} />
         </Routes>
       </main>
       <footer className="mx-auto max-w-6xl px-4 pb-6">
