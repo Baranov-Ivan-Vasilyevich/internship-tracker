@@ -12,6 +12,9 @@ npm run dev
 
 Open http://localhost:5173.
 
+Or double-click **Start Tracker.command** in Finder: it starts the app and opens the browser.
+Keep its Terminal window open while you use the tracker; close it to stop.
+
 | Command               | What it does                                                      |
 | --------------------- | ----------------------------------------------------------------- |
 | `npm run dev`         | Start the app with live reload                                    |
