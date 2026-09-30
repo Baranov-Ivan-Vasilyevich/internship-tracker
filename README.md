@@ -36,6 +36,12 @@ Every file is checked when the app loads. Dates are `"YYYY-MM-DD"`, months are `
 Badges (`certainty`) are one of `official`, `expected`, `target`, `approximate`.
 `verified` is the date you last checked a link, or `null` for "TODO: verify".
 
+### Test prep (`test-prep.json`) and "What they test" (`learning.json`)
+
+Each row in `test-prep.json` is one stage from the doc's prep table. Its `internshipIds` decide which
+tracks show it (a stage appears in every track that contains one of those internships). A track's
+`whatTheyTest` in `learning.json` is the doc's list for that track.
+
 ### Add a resource (`resources.json`)
 
 ```json

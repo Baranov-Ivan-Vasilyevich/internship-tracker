@@ -12,6 +12,7 @@ import type {
   RoundSchema,
   SavedDataSchema,
   SourceSchema,
+  TestPrepSchema,
   TrackSchema,
   WindowSchema,
 } from './schemas'
@@ -20,6 +21,7 @@ export { CERTAINTIES, EVENT_KINDS, EVENT_STATUSES, FITS, RESOURCE_TYPES, SOURCE_
 
 export type Resource = z.infer<typeof ResourceSchema>
 export type Source = z.infer<typeof SourceSchema>
+export type TestPrep = z.infer<typeof TestPrepSchema>
 export type Internship = z.infer<typeof InternshipSchema>
 export type Track = z.infer<typeof TrackSchema>
 export type LearningItem = z.infer<typeof LearningItemSchema>

@@ -66,7 +66,24 @@ export const InternshipSchema = z.object({
   plannedAction: z.object({ text: z.string(), due: day }).optional(),
 })
 
-export const TrackSchema = z.object({ id: z.string(), name: z.string(), resources: z.array(z.string()) })
+export const TrackSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  resources: z.array(z.string()),
+  // From the doc: what the programs in this track test (Tracks A–D)
+  whatTheyTest: z.object({ title: z.string(), items: z.array(z.string()) }).optional(),
+})
+
+// One row of the doc's "Test and interview prep" table
+export const TestPrepSchema = z.object({
+  id: z.string(),
+  stage: z.string(),
+  whoUsesIt: z.string(), // wording from the doc
+  howToPrepare: z.string(),
+  note: z.string(),
+  internshipIds: z.array(z.string()), // used to show the stage in the tracks of these programs
+  resources: z.array(z.string()),
+})
 
 export const LearningItemSchema = z.object({
   id: z.string(),

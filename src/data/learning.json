@@ -8,22 +8,61 @@
     {
       "id": "A",
       "name": "Track A: valuation and deals",
-      "resources": ["damodaran", "fso", "mi-400", "shl", "book-rosenbaum"]
+      "resources": ["damodaran", "fso", "mi-400", "shl", "book-rosenbaum"],
+      "whatTheyTest": {
+        "title": "What they test",
+        "items": [
+          "Accounting: the three statements and how they link; IFRS basics.",
+          "Valuation: DCF, WACC, trading comparables, precedent transactions. For the ТеДо valuation team, also the Russian appraisal rules: 135-ФЗ «Об оценочной деятельности» and ФСО I–VI.",
+          "Excel modeling speed and clean PowerPoint slides.",
+          "Numerical and verbal reasoning tests (B1, Gazprombank, Sber)."
+        ]
+      }
     },
     {
       "id": "B",
       "name": "Track B: risk and model validation",
-      "resources": ["tedo-validation", "cbr-845p", "give-me-credit"]
+      "resources": ["tedo-validation", "cbr-845p", "give-me-credit"],
+      "whatTheyTest": {
+        "title": "What they test",
+        "items": [
+          "Credit-risk parameters: probability of default (PD), loss given default (LGD), exposure at default (EAD). Expected loss is their product: EL = PD × LGD × EAD.",
+          "Validation metrics: discriminatory power (Gini = 2 × AUC − 1), calibration tests, population stability index (PSI).",
+          "Regulation: IFRS 9 expected credit loss and its three stages; the Russian internal-ratings rules, now Положение Банка России 845-П, which replaced 483-П in February 2025.",
+          "Tools: statistics, logistic regression, Python (pandas, scikit-learn, statsmodels), SQL, Excel."
+        ]
+      }
     },
     {
       "id": "C",
       "name": "Track C: data analytics and data science in banks",
-      "resources": ["sql-academy", "datalens", "catboost"]
+      "resources": ["sql-academy", "datalens", "catboost"],
+      "whatTheyTest": {
+        "title": "What they test",
+        "items": [
+          "SQL: JOINs, GROUP BY, subqueries; window functions for stronger candidates.",
+          "Python with pandas, plus basic statistics.",
+          "For analytics roles: A/B tests, product metrics, dashboards.",
+          "For DS roles: gradient boosting (CatBoost), feature engineering, model metrics.",
+          "T-Bank's analyst selection is a 90–120 minute task, then an HR video interview and a technical interview."
+        ]
+      }
     },
     {
       "id": "D",
       "name": "Track D: quant and AI research",
-      "resources": ["yandex-math", "book-hull", "dls", "karpathy", "hf-llm"]
+      "resources": ["yandex-math", "book-hull", "dls", "karpathy", "hf-llm"],
+      "whatTheyTest": {
+        "title": "What you need on top of Tracks B and C",
+        "items": [
+          "Math: linear algebra, calculus, probability, and some stochastic processes for pricing.",
+          "Finance: derivatives pricing (Black–Scholes), risk metrics (VaR, expected shortfall), fixed income.",
+          "Deep learning: PyTorch, neural networks, transformers; for the LLM track, fine-tuning (SFT, LoRA) and RL basics.",
+          "Sber Risk Research posting, Risk Quant: pricing models and risk metrics, financial markets, transformers, diffusion models, VAE, LLM, RL.",
+          "Sber Risk Research posting, Data Scientist: ML for lending: uplift modeling, time series, AI agents, transformer-based models.",
+          "Sber Risk Research posting, LLM Researcher: AI agents, multi-agent systems, SFT, LoRA, GRPO, RL, reasoning."
+        ]
+      }
     },
     {
       "id": "E",

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "reasoning-tests",
+    "stage": "Numerical and verbal reasoning tests",
+    "whoUsesIt": "Kept, B1, Gazprombank, Sber, Bank of Russia, MOEX Study & Work (Talent Q)",
+    "howToPrepare": "Two or three timed SHL practice tests a week from October",
+    "note": "",
+    "internshipIds": ["kept", "b1-tas", "gpb-experience", "sber-internships", "sber-cib", "cbr-spring", "moex-summer"],
+    "resources": ["shl"]
+  },
+  {
+    "id": "video-interview",
+    "stage": "Recorded video interview",
+    "whoUsesIt": "Kept, B1, Sber, Gazprombank, Bank of Russia",
+    "howToPrepare": "Record 1–2 minute answers in Russian and English: why this team, why finance + ML, a project you built yourself (P4 initiation report or your A1 DCF rebuild)",
+    "note": "",
+    "internshipIds": ["kept", "b1-tas", "sber-internships", "sber-cib", "gpb-experience", "cbr-spring"],
+    "resources": []
+  },
+  {
+    "id": "valuation-technical",
+    "stage": "Valuation technical interview",
+    "whoUsesIt": "ТеДо valuation, B1 Transaction Advisory, Sber CIB",
+    "howToPrepare": "Walk through a DCF you built yourself (A1 rebuild or P4) aloud; drill the 400 Questions guide",
+    "note": "",
+    "internshipIds": ["tedo-valuation", "b1-tas", "sber-cib"],
+    "resources": ["mi-400"]
+  },
+  {
+    "id": "sql-python-task",
+    "stage": "SQL and Python task",
+    "whoUsesIt": "T-Bank (90–120 minutes), Sber DS, Alfa tech roles",
+    "howToPrepare": "Timed problems on SQL Academy",
+    "note": "",
+    "internshipIds": ["tbank-tstart", "sber-internships", "alfa"],
+    "resources": ["sql-academy"]
+  },
+  {
+    "id": "case-interview",
+    "stage": "Case or team interview",
+    "whoUsesIt": "Kept (team interview on reading material), MOEX Summer (case rounds), DRT (assessment stage)",
+    "howToPrepare": "Changellenge case championships; practice structuring a case out loud",
+    "note": "",
+    "internshipIds": ["kept", "moex-summer", "drt-young-cfo"],
+    "resources": ["cl-cups"]
+  }
+]

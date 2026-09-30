@@ -5,11 +5,11 @@ import { TimeLogForm } from '../components/TimeLogForm'
 import { Card, ProgressBar, inputClass, secondaryButtonClass } from '../components/ui'
 import { currentMonth, formatDate, todayISO } from '../lib/dates'
 import { hoursByItem, hoursInWeek, streak } from '../lib/timeLog'
-import { LEARNING, TRACKS, isActive, projectById } from '../seed'
+import { LEARNING, TRACKS, isActive, projectById, testPrepForTrack } from '../seed'
 import { useData } from '../state/context'
 import { useEvents, useTimeLog, useToggle } from '../state/hooks'
 import type { TimeEntry } from '../lib/timeLog'
-import type { LearningItem } from '../types'
+import type { LearningItem, Track } from '../types'
 
 export default function Learning() {
   const { data } = useData()
@@ -81,6 +81,8 @@ export default function Learning() {
                 </span>
               </div>
             )}
+
+            {isOpen && <TrackPrep trackId={track.id} whatTheyTest={track.whatTheyTest} />}
 
             {isOpen && (
               <ul className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -255,5 +257,53 @@ function TimeLogCard() {
         </ul>
       )}
     </Card>
+  )
+}
+
+// The doc's "What they test" list and the test-prep stages used by this track's programs.
+// Both fold away (<details>) so the checklist stays the main thing on the page.
+function TrackPrep({ trackId, whatTheyTest }: { trackId: string; whatTheyTest: Track['whatTheyTest'] }) {
+  const prep = testPrepForTrack(trackId)
+  if (!whatTheyTest && prep.length === 0) return null
+  const summaryClass = 'cursor-pointer text-sm font-medium text-slate-700 dark:text-slate-300'
+  return (
+    <div className="space-y-2 rounded-md bg-slate-50 p-3 dark:bg-slate-800/50">
+      {whatTheyTest && (
+        <details>
+          <summary className={summaryClass}>
+            {whatTheyTest.title} ({whatTheyTest.items.length})
+          </summary>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+            {whatTheyTest.items.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </details>
+      )}
+      {prep.length > 0 && (
+        <details>
+          <summary className={summaryClass}>Test and interview prep ({prep.length} stages)</summary>
+          <ul className="mt-2 space-y-3 text-sm">
+            {prep.map((p) => (
+              <li key={p.id}>
+                <div className="font-medium">{p.stage}</div>
+                <div className="text-xs text-slate-500">Who uses it: {p.whoUsesIt}</div>
+                <div>
+                  <span className="text-slate-500">How to prepare: </span>
+                  {p.howToPrepare}
+                  {p.resources.map((id) => (
+                    <span key={id}>
+                      {' · '}
+                      <ResourceLink id={id} />
+                    </span>
+                  ))}
+                </div>
+                {p.note && <div className="text-xs text-amber-700 dark:text-amber-400">{p.note}</div>}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </div>
   )
 }

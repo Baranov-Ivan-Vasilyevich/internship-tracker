@@ -7,12 +7,14 @@ import internshipsJson from './data/internships.json'
 import learningJson from './data/learning.json'
 import projectsJson from './data/projects.json'
 import resourcesJson from './data/resources.json'
+import testPrepJson from './data/test-prep.json'
 import {
   EventSchema,
   InternshipSchema,
   LearningFileSchema,
   ProjectsFileSchema,
   ResourceSchema,
+  TestPrepSchema,
   WindowSchema,
   explain,
 } from './schemas'
@@ -38,6 +40,7 @@ export const PROJECTS = projects.projects
 export const PROJECT_RULES = projects.rules
 export const WINDOWS = check('application-windows.json', WindowSchema.array(), windowsJson, [])
 export const EVENTS = check('events.json', EventSchema.array(), eventsJson, [])
+export const TEST_PREP = check('test-prep.json', TestPrepSchema.array(), testPrepJson, [])
 
 // ---------- cross-checks: every id that is referenced must exist ----------
 
@@ -74,6 +77,7 @@ const unknownResource = (file: string, where: string, ids: string[]) =>
 TRACKS.forEach((t) => unknownResource('learning.json', `track ${t.id}`, t.resources))
 LEARNING.forEach((i) => unknownResource('learning.json', `item ${i.id}`, i.resources))
 EVENTS.forEach((e) => unknownResource('events.json', `event ${e.id}`, e.resources))
+TEST_PREP.forEach((t) => unknownResource('test-prep.json', `stage ${t.id}`, t.resources))
 
 const trackIds = new Set(TRACKS.map((t) => t.id))
 LEARNING.filter((i) => !trackIds.has(i.track)).forEach((i) =>
@@ -84,11 +88,12 @@ LEARNING.filter((i) => i.project && !projectIds.has(i.project)).forEach((i) =>
   SEED_ERRORS.push(`learning.json → item ${i.id}: project "${i.project}" is not in projects.json`),
 )
 const internshipIds = new Set(INTERNSHIPS.map((i) => i.id))
-WINDOWS.forEach((w) =>
-  w.internshipIds
+const unknownInternship = (file: string, where: string, ids: string[]) =>
+  ids
     .filter((id) => !internshipIds.has(id))
-    .forEach((id) => SEED_ERRORS.push(`application-windows.json → ${w.id}: internship "${id}" does not exist`)),
-)
+    .forEach((id) => SEED_ERRORS.push(`${file} → ${where}: internship "${id}" does not exist`))
+WINDOWS.forEach((w) => unknownInternship('application-windows.json', w.id, w.internshipIds))
+TEST_PREP.forEach((t) => unknownInternship('test-prep.json', t.id, t.internshipIds))
 
 // ---------- small lookups used by several pages ----------
 
@@ -114,4 +119,10 @@ export function tracksUsing(resourceId: string): string[] {
 // Resources for a CV project = the resources of the learning items that lead to it
 export function projectResources(projectId: string): string[] {
   return [...new Set(LEARNING.filter((i) => i.project === projectId).flatMap((i) => i.resources))]
+}
+
+// Test-prep stages used by programs in a track (e.g. Track A → reasoning tests, valuation interview…)
+export function testPrepForTrack(trackId: string) {
+  const inTrack = new Set(INTERNSHIPS.filter((i) => i.tracks.includes(trackId)).map((i) => i.id))
+  return TEST_PREP.filter((t) => t.internshipIds.some((id) => inTrack.has(id)))
 }
