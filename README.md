@@ -132,7 +132,40 @@ You can also add internships in the app (**+ Add internship**).
 registration deadlines so they appear in "Next deadlines" with a 7-day reminder in the calendar file.
 You can also add events in the app (**+ Add event**).
 
-## Deploy (GitHub Pages)
+## Online version (GitHub Pages)
 
-Pushing to `main` runs `.github/workflows/deploy.yml`: lint, tests, build, then publish.
-One-time setup: repo **Settings → Pages → Source: GitHub Actions**.
+Live at **https://baranov-ivan-vasilyevich.github.io/internship-tracker/** (use it on the iPhone).
+The site shows the plan from `src/data`; your own data (statuses, notes, hours) is never uploaded.
+
+### Publish a change
+
+After editing code or the JSON files and checking them with `npm run dev`:
+
+```bash
+git add -A
+git commit -m "Describe the change"
+git push
+```
+
+`git push` starts `.github/workflows/deploy.yml`: lint → tests → build → publish. If lint or a test
+fails, nothing is published. Follow it with `gh run watch` (or the repo's **Actions** tab); the site
+updates about a minute after it turns green. On the iPhone, close and reopen the tracker to load it.
+
+One-time setup (already done): repo **Settings → Pages → Source: GitHub Actions**.
+
+### Keep the Mac and the iPhone in sync
+
+Each device (and each browser) keeps its **own** copy of your data. Nothing syncs by itself.
+Pick one device as the main one for the day, and move the data when you switch:
+
+1. On the device you used last: **Backup → Download backup** (a `.json` file).
+2. Get the file to the other device (AirDrop, iCloud Drive, Telegram "Saved Messages"…).
+3. On the other device: **Backup → Import backup…** and choose the file. This replaces the data there.
+
+Tips:
+
+- Import **replaces** everything on that device, so always move from the newest copy to the older one.
+- The Mac also saves to `data/user-data.json` while `npm run dev` runs; the iPhone doesn't, so it
+  reminds you monthly to download a backup.
+- Safari on iPhone may delete site data for sites you haven't opened for a few weeks. Open the
+  tracker regularly and keep recent backups.
