@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import { BackupReminder } from './components/BackupReminder'
 import { BottomTabs } from './components/BottomTabs'
 import { DiskIndicator } from './components/DiskIndicator'
@@ -14,6 +14,7 @@ import Projects from './pages/Projects'
 import Resources from './pages/Resources'
 import Timeline from './pages/Timeline'
 import { SEED_ERRORS } from './seed'
+import { diskAvailable } from './state/diskSync'
 import { useData } from './state/context'
 
 const PAGES = [
@@ -148,6 +149,15 @@ function Layout() {
             className="mb-4 rounded-md bg-amber-100 px-3 py-2 text-sm text-amber-900 dark:bg-amber-900/40 dark:text-amber-200"
           >
             {warning}
+          </p>
+        )}
+        {/* The online version (GitHub Pages) is only a copy of the Mac's data */}
+        {!diskAvailable && (
+          <p className="mb-3 text-xs text-slate-500">
+            This is a view copy. Edit on the Mac.{' '}
+            <Link to="/backup" className="underline">
+              How to update it
+            </Link>
           </p>
         )}
         <BackupReminder />

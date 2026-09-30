@@ -1,9 +1,11 @@
-// When to remind you to download a backup (mainly for the phone / GitHub Pages version,
-// where nothing is saved to disk).
+// When to remind you that the iPhone (view) copy is out of date.
+// The Mac is the main device; the iPhone gets a fresh backup from it every week. The backup
+// carries the date the Mac made it (lastBackupAt), so on the iPhone that date = "last update".
+// Never shown on the Mac while npm run dev saves to disk.
 import type { SavedData } from '../types'
 import { daysBetween } from './dates'
 
-export const REMIND_AFTER_DAYS = 30
+export const REMIND_AFTER_DAYS = 7
 export const SNOOZE_DAYS = 7
 
 // Is there anything worth backing up?
@@ -19,7 +21,7 @@ export function hasUserData(d: SavedData) {
   )
 }
 
-// Returns null (no reminder) or the number of days since the last backup (Infinity = never)
+// Returns null (no reminder) or how many days old this copy is (Infinity = never updated from the Mac)
 export function backupReminder(d: SavedData, today: string, savedToDisk: boolean): number | null {
   if (savedToDisk || !hasUserData(d)) return null
   if (d.backupSnoozedUntil && today < d.backupSnoozedUntil) return null

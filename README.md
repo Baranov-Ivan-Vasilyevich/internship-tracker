@@ -155,17 +155,20 @@ One-time setup (already done): repo **Settings → Pages → Source: GitHub Acti
 
 ### Keep the Mac and the iPhone in sync
 
-Each device (and each browser) keeps its **own** copy of your data. Nothing syncs by itself.
-Pick one device as the main one for the day, and move the data when you switch:
+**Mac (localhost) is the main device. The iPhone is for viewing. Move a backup Mac → iPhone weekly.**
+The online version shows a note: “This is a view copy. Edit on the Mac.”
 
-1. On the device you used last: **Backup → Download backup** (a `.json` file).
-2. Get the file to the other device (AirDrop, iCloud Drive, Telegram "Saved Messages"…).
-3. On the other device: **Backup → Import backup…** and choose the file. This replaces the data there.
+Each device (and each browser) keeps its **own** copy of your data. Nothing syncs by itself.
+To update the iPhone (at least weekly):
+
+1. On the Mac: **Backup → Download backup** (a `.json` file).
+2. Send it to the iPhone (AirDrop, iCloud Drive, Telegram "Saved Messages"…).
+3. On the iPhone: **More → Backup → Import backup…** and choose the file. This replaces the data there.
 
 Tips:
 
-- Import **replaces** everything on that device, so always move from the newest copy to the older one.
-- The Mac also saves to `data/user-data.json` while `npm run dev` runs; the iPhone doesn't, so it
-  reminds you monthly to download a backup.
+- Import **replaces** everything on the iPhone, so changes made there are lost at the next import. Make changes on the Mac.
+- The Mac also saves to `data/user-data.json` while `npm run dev` runs. The iPhone shows a reminder
+  when its copy is more than a week old.
 - Safari on iPhone may delete site data for sites you haven't opened for a few weeks. Open the
   tracker regularly and keep recent backups.

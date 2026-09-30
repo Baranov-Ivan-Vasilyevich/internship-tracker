@@ -1,13 +1,13 @@
+import { Link } from 'react-router-dom'
 import { backupReminder, SNOOZE_DAYS } from '../lib/backupReminder'
 import { formatDate, todayISO } from '../lib/dates'
 import { useData } from '../state/context'
-import { useDownloadBackup, useSnoozeBackupReminder } from '../state/hooks'
+import { useSnoozeBackupReminder } from '../state/hooks'
 import { buttonClass, secondaryButtonClass } from './ui'
 
-// Banner at the top of every page when a backup is due (see lib/backupReminder.ts for the rules)
+// Banner on the iPhone (view copy) when it hasn't been refreshed from the Mac for a week (rules: lib/backupReminder.ts)
 export function BackupReminder() {
   const { data, diskStatus } = useData()
-  const downloadBackup = useDownloadBackup()
   const snooze = useSnoozeBackupReminder()
   const days = backupReminder(data, todayISO(), diskStatus === 'saved')
   if (days === null) return null
@@ -19,13 +19,13 @@ export function BackupReminder() {
     >
       <span className="min-w-0 flex-1">
         {days === Infinity
-          ? "You haven't downloaded a backup yet."
-          : `Your last backup was ${days} days ago (${formatDate(data.lastBackupAt)}).`}{' '}
-        Your data lives only in this browser, so keep a copy.
+          ? "This view copy hasn't been updated from the Mac yet."
+          : `This view copy is ${days} days old (Mac backup from ${formatDate(data.lastBackupAt)}).`}{' '}
+        Download a backup on the Mac and import it here.
       </span>
-      <button onClick={downloadBackup} className={buttonClass}>
-        Download backup
-      </button>
+      <Link to="/backup" className={buttonClass}>
+        Import backup
+      </Link>
       <button onClick={() => snooze(SNOOZE_DAYS)} className={secondaryButtonClass}>
         Remind me in a week
       </button>

@@ -10,6 +10,8 @@ import { useDownloadBackup, useEvents } from '../state/hooks'
 import { emptyData, migrate } from '../state/migrate'
 import { seedIds } from '../state/storage'
 
+const DEVICE_RULE = 'Mac (localhost) is the main device. The iPhone is for viewing. Move a backup Mac → iPhone weekly.'
+
 export default function Backup() {
   const { setData } = useData()
   const { rows: events } = useEvents()
@@ -45,6 +47,13 @@ export default function Backup() {
   return (
     <div className="space-y-4">
       <h1 className="text-xl font-semibold">Backup & export</h1>
+
+      <Card tone="note" className="text-sm">
+        <b>{DEVICE_RULE}</b>
+        <p className="mt-1 text-slate-600 dark:text-slate-400">
+          On the Mac: Download backup. On the iPhone: Import backup and choose that file.
+        </p>
+      </Card>
 
       {message && (
         <p className="rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
