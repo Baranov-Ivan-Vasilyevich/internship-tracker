@@ -8,6 +8,7 @@ import type {
   InternshipStateSchema,
   LearningItemSchema,
   ProjectSchema,
+  ProjectStateSchema,
   ResourceSchema,
   RoundSchema,
   SavedDataSchema,
@@ -17,7 +18,16 @@ import type {
   WindowSchema,
 } from './schemas'
 
-export { CERTAINTIES, EVENT_KINDS, EVENT_STATUSES, FITS, RESOURCE_TYPES, SOURCE_KINDS, STATUSES } from './schemas'
+export {
+  CERTAINTIES,
+  EVENT_KINDS,
+  EVENT_STATUSES,
+  FITS,
+  PROJECT_STATUSES,
+  RESOURCE_TYPES,
+  SOURCE_KINDS,
+  STATUSES,
+} from './schemas'
 
 export type Resource = z.infer<typeof ResourceSchema>
 export type Source = z.infer<typeof SourceSchema>
@@ -26,6 +36,7 @@ export type Internship = z.infer<typeof InternshipSchema>
 export type Track = z.infer<typeof TrackSchema>
 export type LearningItem = z.infer<typeof LearningItemSchema>
 export type Project = z.infer<typeof ProjectSchema>
+export type ProjectState = z.infer<typeof ProjectStateSchema>
 export type Dated = z.infer<typeof DatedSchema>
 export type Window = z.infer<typeof WindowSchema>
 export type EventEntry = z.infer<typeof EventSchema>

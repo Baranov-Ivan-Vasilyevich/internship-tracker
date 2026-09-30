@@ -29,7 +29,7 @@ export default function Dashboard() {
   const thisMonth = LEARNING.filter((i) => i.track !== 'foundation' && isActive(i, month) && !done.has(i.id))
 
   const learningDone = LEARNING.filter((i) => done.has(i.id)).length
-  const projectsDone = PROJECTS.filter((p) => data.projectsDone.includes(p.id)).length
+  const projectsDone = PROJECTS.filter((p) => data.projects[p.id]?.status === 'Done').length
 
   return (
     <div className="space-y-4">

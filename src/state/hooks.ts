@@ -1,9 +1,9 @@
 // Everything pages need to read and change your data.
 import { todayISO } from '../lib/dates'
 import type { TimeEntry } from '../lib/timeLog'
-import { EventStateSchema, InternshipStateSchema } from '../schemas'
+import { EventStateSchema, InternshipStateSchema, ProjectStateSchema } from '../schemas'
 import { EVENTS, INTERNSHIPS } from '../seed'
-import type { EventEntry, EventState, Internship, InternshipState, Round } from '../types'
+import type { EventEntry, EventState, Internship, InternshipState, ProjectState, Round } from '../types'
 import { useData } from './context'
 
 const defaultInternshipState = (): InternshipState => InternshipStateSchema.parse({})
@@ -81,10 +81,10 @@ export function useEvents() {
   }
 }
 
-// Tick / untick a learning item or a CV project
+// Tick / untick a learning item
 export function useToggle() {
   const { setData } = useData()
-  return (list: 'learningDone' | 'projectsDone', id: string) =>
+  return (list: 'learningDone', id: string) =>
     setData((d) => ({
       ...d,
       [list]: d[list].includes(id) ? d[list].filter((x) => x !== id) : [...d[list], id],
@@ -100,5 +100,20 @@ export function useTimeLog() {
     add: (entry: TimeEntry) => setData((d) => ({ ...d, timeLog: [...d.timeLog, entry] })),
     remove: (id: string) => setData((d) => ({ ...d, timeLog: d.timeLog.filter((e) => e.id !== id) })),
     setTarget: (hours: number) => setData((d) => ({ ...d, weeklyTargetHours: hours })),
+  }
+}
+
+// Your status, link and notes for each CV project
+export function useProjects() {
+  const { data, setData } = useData()
+  const stateOf = (id: string): ProjectState => data.projects[id] ?? ProjectStateSchema.parse({})
+  return {
+    stateOf,
+    doneCount: Object.values(data.projects).filter((p) => p.status === 'Done').length,
+    update: (id: string, changes: Partial<ProjectState>) =>
+      setData((d) => ({
+        ...d,
+        projects: { ...d.projects, [id]: { ...(d.projects[id] ?? ProjectStateSchema.parse({})), ...changes } },
+      })),
   }
 }

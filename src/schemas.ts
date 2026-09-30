@@ -179,6 +179,20 @@ export const TimeEntrySchema = z.object({
   note: z.string(),
 })
 
+export const PROJECT_STATUSES = ['Not started', 'In progress', 'Done'] as const
+
+// Your progress on one CV project
+export const ProjectStateSchema = z.object({
+  status: z.enum(PROJECT_STATUSES).default('Not started'),
+  url: z.string().default(''), // GitHub / Kaggle link
+  // The 4-part project note
+  question: z.string().default(''),
+  whatIDid: z.string().default(''),
+  result: z.string().default(''),
+  nextStep: z.string().default(''),
+  selfWritten: z.boolean().default(false), // "I wrote this myself; AI only explained"
+})
+
 export const SCHEMA_VERSION = 2
 
 export const SavedDataSchema = z.object({
@@ -186,7 +200,8 @@ export const SavedDataSchema = z.object({
   internships: z.record(z.string(), InternshipStateSchema).default({}), // keyed by internship id
   customInternships: z.array(InternshipSchema).default([]), // ones you added in the app
   learningDone: z.array(z.string()).default([]),
-  projectsDone: z.array(z.string()).default([]),
+  projectsDone: z.array(z.string()).default([]), // old "done" ticks; moved into `projects` when loading
+  projects: z.record(z.string(), ProjectStateSchema).default({}), // keyed by project id
   events: z.record(z.string(), EventStateSchema).default({}), // keyed by event id
   customEvents: z.array(EventSchema).default([]),
   timeLog: z.array(TimeEntrySchema).default([]),

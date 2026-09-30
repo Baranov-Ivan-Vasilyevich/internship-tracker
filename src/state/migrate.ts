@@ -9,6 +9,7 @@ import {
   EventStateSchema,
   InternshipSchema,
   InternshipStateSchema,
+  ProjectStateSchema,
   RoundSchema,
   SCHEMA_VERSION,
   SavedDataSchema,
@@ -35,9 +36,20 @@ const str = (x: unknown) => (typeof x === 'string' ? x : '')
 
 export function migrate(raw: unknown, seed: SeedIds): SavedData {
   const d = raw as Loose
-  if (d && d.schemaVersion === SCHEMA_VERSION) return SavedDataSchema.parse(d) // fills in any missing fields
-  if (d && d.version === 1) return fromV1(d, seed)
+  if (d && d.schemaVersion === SCHEMA_VERSION) return moveProjectTicks(SavedDataSchema.parse(d)) // fills in missing fields
+  if (d && d.version === 1) return moveProjectTicks(fromV1(d, seed))
   throw new Error('This is not data from this app (no known version number).')
+}
+
+// Projects used to be a simple "done" tick (projectsDone). Now each project has its own
+// record with a status; old ticks become status "Done" and the old list is emptied.
+function moveProjectTicks(data: SavedData): SavedData {
+  if (data.projectsDone.length === 0) return data
+  const projects = { ...data.projects }
+  for (const id of data.projectsDone) {
+    projects[id] = { ...ProjectStateSchema.parse(projects[id] ?? {}), status: 'Done' }
+  }
+  return { ...data, projects, projectsDone: [] }
 }
 
 function fromV1(d: Loose, seed: SeedIds): SavedData {

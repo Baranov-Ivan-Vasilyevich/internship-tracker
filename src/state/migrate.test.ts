@@ -38,7 +38,6 @@ describe('migrate', () => {
       dateApplied: '2026-10-01',
     })
     expect(d.learningDone).toEqual(['FND1'])
-    expect(d.projectsDone).toEqual(['P1'])
   })
 
   it('follows renamed internship ids', () => {
@@ -75,6 +74,17 @@ describe('migrate', () => {
   it('never keeps a rename target and old id at once, and leaves unknown ids alone', () => {
     const d = migrate({ ...emptyData(), internships: { 'removed-row': { status: 'Applied' } } }, seed)
     expect(d.internships['removed-row'].status).toBe('Applied') // kept, just not shown
+  })
+
+  it('turns old project ticks into status "Done" without touching other project data', () => {
+    const d = migrate(
+      { schemaVersion: SCHEMA_VERSION, projectsDone: ['P1', 'P2'], projects: { P2: { url: 'https://github.com/x' } } },
+      seed,
+    )
+    expect(d.projects.P1.status).toBe('Done')
+    expect(d.projects.P2).toMatchObject({ status: 'Done', url: 'https://github.com/x', selfWritten: false })
+    expect(d.projectsDone).toEqual([])
+    expect(migrate(v1, seed).projects.P1.status).toBe('Done') // v1 ticks too
   })
 
   it('rejects files that are not from this app', () => {
