@@ -1,17 +1,22 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ResourceLink } from '../components/ResourceLink'
-import { Card, ProgressBar, secondaryButtonClass } from '../components/ui'
-import { currentMonth } from '../lib/dates'
+import { TimeLogForm } from '../components/TimeLogForm'
+import { Card, ProgressBar, inputClass, secondaryButtonClass } from '../components/ui'
+import { currentMonth, formatDate, todayISO } from '../lib/dates'
+import { hoursByItem, hoursInWeek, streak } from '../lib/timeLog'
 import { LEARNING, TRACKS, isActive, projectById } from '../seed'
 import { useData } from '../state/context'
-import { useEvents, useToggle } from '../state/hooks'
+import { useEvents, useTimeLog, useToggle } from '../state/hooks'
+import type { TimeEntry } from '../lib/timeLog'
 import type { LearningItem } from '../types'
 
 export default function Learning() {
   const { data } = useData()
   const { rows: allEvents } = useEvents()
   const toggle = useToggle()
+  const timeLog = useTimeLog()
+  const perItem = hoursByItem(timeLog.entries)
   const done = new Set(data.learningDone)
   const month = currentMonth()
 
@@ -36,6 +41,8 @@ export default function Learning() {
         <ProgressBar done={doneCount} total={LEARNING.length} />
       </Card>
 
+      <TimeLogCard />
+
       <div className="flex gap-2">
         <button className={secondaryButtonClass} onClick={() => setOpen(new Set(TRACKS.map((t) => t.id)))}>
           Expand all
@@ -48,6 +55,7 @@ export default function Learning() {
       {TRACKS.map((track) => {
         const items = LEARNING.filter((i) => i.track === track.id)
         const trackDone = items.filter((i) => done.has(i.id)).length
+        const trackHours = Math.round(items.reduce((sum, i) => sum + (perItem.get(i.id) ?? 0), 0) * 100) / 100
         const events = allEvents.filter((e) => e.track === track.id)
         const isOpen = open.has(track.id)
         return (
@@ -59,6 +67,7 @@ export default function Learning() {
             >
               <span className="w-4 text-slate-400">{isOpen ? '▾' : '▸'}</span>
               <span className="flex-1 font-medium">{track.name}</span>
+              {trackHours > 0 && <span className="text-xs text-slate-500 tabular-nums">{trackHours} h</span>}
             </button>
             <ProgressBar done={trackDone} total={items.length} />
 
@@ -82,6 +91,8 @@ export default function Learning() {
                     done={done.has(item.id)}
                     active={isActive(item, month)}
                     onToggle={() => toggle('learningDone', item.id)}
+                    hours={perItem.get(item.id) ?? 0}
+                    onLog={timeLog.add}
                   />
                 ))}
               </ul>
@@ -115,10 +126,18 @@ export default function Learning() {
   )
 }
 
-type RowProps = { item: LearningItem; done: boolean; active: boolean; onToggle: () => void }
+type RowProps = {
+  item: LearningItem
+  done: boolean
+  active: boolean
+  onToggle: () => void
+  hours: number
+  onLog: (entry: TimeEntry) => void
+}
 
-function LearningRow({ item, done, active, onToggle }: RowProps) {
+function LearningRow({ item, done, active, onToggle, hours, onLog }: RowProps) {
   const project = item.project ? projectById(item.project) : undefined
+  const [logging, setLogging] = useState(false)
   return (
     <li className="flex gap-3 py-3">
       <input
@@ -142,7 +161,25 @@ function LearningRow({ item, done, active, onToggle }: RowProps) {
           {item.resources.map((id) => (
             <ResourceLink key={id} id={id} />
           ))}
+          {hours > 0 && <span className="tabular-nums">{hours} h logged</span>}
+          <button
+            onClick={() => setLogging(!logging)}
+            className="text-blue-600 hover:underline dark:text-blue-400"
+            aria-expanded={logging}
+          >
+            + time
+          </button>
         </div>
+        {logging && (
+          <TimeLogForm
+            fixedItemId={item.id}
+            onSave={(entry) => {
+              onLog(entry)
+              setLogging(false)
+            }}
+            onCancel={() => setLogging(false)}
+          />
+        )}
         {(item.proof || project) && (
           <div className="text-xs">
             <span className="font-medium text-slate-600 dark:text-slate-300">CV proof: </span>
@@ -157,5 +194,66 @@ function LearningRow({ item, done, active, onToggle }: RowProps) {
         )}
       </div>
     </li>
+  )
+}
+
+// Hours this week, streak, weekly target and the most recent entries (with delete)
+function TimeLogCard() {
+  const { entries, target, remove, setTarget } = useTimeLog()
+  const today = todayISO()
+  const { current, best } = streak(entries, target, today)
+  const title = (id: string) => LEARNING.find((i) => i.id === id)?.title ?? 'Other / general'
+  const recent = [...entries].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 8)
+
+  return (
+    <Card className="space-y-3">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+        <span className="font-medium">Time log</span>
+        <span>
+          This week: <b className="tabular-nums">{hoursInWeek(entries, today)}</b> / {target} h
+        </span>
+        <span>
+          Streak: <b>{current}</b> {current === 1 ? 'week' : 'weeks'} (best {best})
+        </span>
+        <label className="ml-auto flex items-center gap-2 text-slate-500">
+          Weekly target
+          <input
+            type="number"
+            min={1}
+            max={80}
+            step={0.5}
+            value={target}
+            onChange={(e) => Number(e.target.value) > 0 && setTarget(Number(e.target.value))}
+            className={`${inputClass} w-20`}
+          />
+          h
+        </label>
+      </div>
+      {recent.length === 0 ? (
+        <p className="text-sm text-slate-400">
+          No time logged yet. Use “+ time” on an item, or the form on the Dashboard.
+        </p>
+      ) : (
+        <ul className="space-y-1 text-sm">
+          {recent.map((e) => (
+            <li key={e.id} className="flex gap-2">
+              <span className="w-24 shrink-0 text-slate-500">{formatDate(e.date)}</span>
+              <span className="w-12 shrink-0 tabular-nums">{e.hours} h</span>
+              <span className="min-w-0 flex-1 truncate" title={title(e.itemId)}>
+                {title(e.itemId)}
+                {e.note && <span className="text-slate-500"> · {e.note}</span>}
+              </span>
+              <button
+                onClick={() => confirm('Delete this time entry?') && remove(e.id)}
+                className="text-xs text-slate-400 hover:text-rose-600"
+                aria-label={`Delete ${e.hours} h on ${formatDate(e.date)}`}
+              >
+                ✕
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Card>
   )
 }

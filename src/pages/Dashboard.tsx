@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ResourceLink } from '../components/ResourceLink'
+import { ThisWeek } from '../components/ThisWeek'
 import { Card, CertaintyBadge, ProgressBar } from '../components/ui'
 import { currentMonth, formatDate, formatMonth, inDaysText, todayISO } from '../lib/dates'
 import { collectDates, upcomingDeadlines } from '../lib/deadlines'
@@ -33,6 +34,8 @@ export default function Dashboard() {
   return (
     <div className="space-y-4">
       <h1 className="text-xl font-semibold">Dashboard</h1>
+
+      <ThisWeek />
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card>

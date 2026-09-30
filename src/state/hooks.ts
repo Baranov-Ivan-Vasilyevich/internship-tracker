@@ -1,5 +1,6 @@
 // Everything pages need to read and change your data.
 import { todayISO } from '../lib/dates'
+import type { TimeEntry } from '../lib/timeLog'
 import { EventStateSchema, InternshipStateSchema } from '../schemas'
 import { EVENTS, INTERNSHIPS } from '../seed'
 import type { EventEntry, EventState, Internship, InternshipState, Round } from '../types'
@@ -88,4 +89,16 @@ export function useToggle() {
       ...d,
       [list]: d[list].includes(id) ? d[list].filter((x) => x !== id) : [...d[list], id],
     }))
+}
+
+// Learning time log and weekly target
+export function useTimeLog() {
+  const { data, setData } = useData()
+  return {
+    entries: data.timeLog,
+    target: data.weeklyTargetHours,
+    add: (entry: TimeEntry) => setData((d) => ({ ...d, timeLog: [...d.timeLog, entry] })),
+    remove: (id: string) => setData((d) => ({ ...d, timeLog: d.timeLog.filter((e) => e.id !== id) })),
+    setTarget: (hours: number) => setData((d) => ({ ...d, weeklyTargetHours: hours })),
+  }
 }

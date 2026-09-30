@@ -153,6 +153,15 @@ export const EventStateSchema = z.object({
   rounds: z.array(RoundSchema).default([]),
 })
 
+// One entry in the learning time log. itemId = learning item id, or "" for general study time.
+export const TimeEntrySchema = z.object({
+  id: z.string(),
+  date: day,
+  itemId: z.string(),
+  hours: z.number().positive().max(24),
+  note: z.string(),
+})
+
 export const SCHEMA_VERSION = 2
 
 export const SavedDataSchema = z.object({
@@ -163,6 +172,8 @@ export const SavedDataSchema = z.object({
   projectsDone: z.array(z.string()).default([]),
   events: z.record(z.string(), EventStateSchema).default({}), // keyed by event id
   customEvents: z.array(EventSchema).default([]),
+  timeLog: z.array(TimeEntrySchema).default([]),
+  weeklyTargetHours: z.number().positive().max(80).default(6), // the plan: about 6 h a week
 })
 
 // Turn zod's error into short lines like
