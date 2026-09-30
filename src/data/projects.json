@@ -1,7 +1,6 @@
 {
   "rules": [
-    "Write code yourself (AI only to explain errors).",
-    "Commit to GitHub as you go.",
+    "Write the code yourself and commit as you go.",
     "Keep a note per project: question, what I did, result."
   ],
   "projects": [
